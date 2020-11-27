@@ -17,7 +17,26 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light"><a href="#" class="navbar-brand d-lg-none">Gridbox</a><button type="button" data-toggle="collapse" data-target="#navigations-02"
+
+    <?php
+        include_once('navbar.php');
+
+        $page_select = $_GET['page'];
+
+        switch($page_select){
+            case 'main': include_once('main.php'); break;
+            case 'collections': include_once('collections.php'); break;
+            case 'women': include_once('women.php'); break;
+            case 'men': include_once('men.php'); break;
+            case 'kids': include_once('kids.php'); break;
+            case 'brands': include_once('brands.php'); break;
+            case 'contact': include_once('contact.php'); break;
+            default : include_once('main.php');break;
+        }
+
+    ?>
+
+    <!--<nav class="navbar navbar-expand-lg navbar-light bg-light"><a href="#" class="navbar-brand d-lg-none">Gridbox</a><button type="button" data-toggle="collapse" data-target="#navigations-02"
             class="navbar-toggler"><span class="navbar-toggler-icon"></span></button><a href="#" class="navbar-brand mr-0">Little Brand Shoe Store</a>
         <div id="navigations-02" class="collapse navbar-collapse justify-content-md-center">
             <ul class="navbar-nav justify-content-end">
@@ -38,14 +57,15 @@
             </div>
         </div><a href="#" class="nav-link">Login</a><a href="#" class="nav-link mt-1"><i class="fa fa-search"></i></a><span id="iiyli">Cart</span><a data-toggle="modal" data-target="#cart"
             class="nav-link"><span id="id112">0</span></a>
-    </nav>
-    <div class="bg-dark hero-form-1 overlay">
-        <!-- Main Content -->
+    </nav>-->
+    
+    <!-- <div class="bg-dark hero-form-1 overlay">
+         Main Content --
         <div class="d-lg-flex align-items-lg-center py-5">
             <div class="container space-2 space-0--lg mt-lg-8 mt-5">
                 <div class="row justify-content-lg-between align-items-lg-center mt-lg-5 mt-md-5">
                     <div class="col-lg-5 mb-7 mb-lg-0">
-                        <!-- Title -->
+                        <-- Title --
                         <h1 class="display-4 font-size-48--md-down text-white mb-0">Buy Simple. Buy Luxury</h1>
                         <div class="row">
                             <div class="col-5"></div>
@@ -54,12 +74,12 @@
                         <ul class="list-unstyled text-light mt-5 mb-0"></ul>
                     </div>
                     <div class="col-lg-5">
-                        <!-- Signup Form -->
-                        <!-- End Signup Form -->
+                        <-- Signup Form --
+                        <-- End Signup Form --
                     </div>
                 </div>
             </div>
-        </div><!-- End Main Content -->
+        </div><-- End Main Content --
     </div>
     <section class="py-10 bg-light">
         <div class="container">
@@ -128,7 +148,7 @@
                 </a>
                 </div>
             </div>
-        </div>
+        </div>-->
         <footer class="footer pt-5 pb-5 py-5 mt-auto bg-light footer-light">
             <div class="container">
                 <div class="row">
