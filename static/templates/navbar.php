@@ -14,7 +14,7 @@
             </ul>
         </div>
         <div class="row w-100">
-            <div class="col-4 pl-lg-0">
+<!--            <div class="col-4 pl-lg-0">
                 <ul class="navbar-nav">
                     <li class="nav-item"></li>
                     <li class="nav-item"></li>
@@ -22,6 +22,7 @@
                     <li class="nav-item cart"></li>
                 </ul>
                 <div class="col-4 pr-lg-0"></div>
+                -->
             </div>
         </div>
         <!--Modify Href for login and cart screen-->
