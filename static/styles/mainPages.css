@@ -281,3 +281,65 @@
   transform: rotate(45deg);
 }
 
+/*Brands page*/
+.logoProducts{
+	width: 20%; 
+	display: flex; 
+	list-style-type: none;
+	padding:5px;
+}
+
+.logoProductImg{
+	position:absolute; 
+	width:90%; 
+	margin-left:5%;
+	margin-right:5%;
+}
+
+.logoProductA{
+	display: flex;
+    flex-direction: column; 
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: inherit;
+    font: inherit;
+    color: inherit;
+    text-decoration: none;
+    padding: 0;
+}
+
+.logoProductDiv2{
+	width: 100%; 
+	position: relative;
+    align-items: flex-start;
+    flex-direction: column;
+    display: block;
+}
+
+.logoProductDiv3{
+	display: block; cursor: pointer;
+    font-size: inherit;
+    font: inherit;
+    color: inherit;
+    width:100%;
+}
+
+.logoProductDiv4{
+	display:table; 
+	position:relative;
+	padding:0px;
+    width:100%; 
+    padding-bottom:100%; 
+}
+
+.logoProductUl{
+	flex-wrap: wrap;
+    justify-content: space-between;
+    display: flex;
+    list-style-type: none;
+  	margin: 1%;
+  	padding: 0;
+}
+
+

@@ -10,13 +10,12 @@
         
 
     <body>
-    <div>
-        <div class="detailsContainer" style="margin-left:10%; margin-right:10%;">
-            <div class="detailsHeader" style="margin: 0 0 40px 0;padding: 30px 5px 5px 5px; border-bottom: 1px solid #dededd; line-height: 1.4px;">
+        <div class="detailsContainer" style="margin-left:10%; margin-right:10%;" >
+            <div class="detailsHeader" style="margin-left: 5%;padding: 30px 5px 15px 5px; line-height: 1.4px;  border-bottom: 1px solid #dededd;">
                 <htag1>
-                    <span class="detailsSpan" style="background: #FFF; display: inline-block; padding-right: 15px; font-weight: normal; font-size: 24px; text-transform: uppercase; letter-spacing: 2px;">
-                        <span class="title title-cap" role="heading" aria-level="1"
-                            style="font-size: 14px; font-weight: bold; color:black;">Dandelion</span>
+                    <span class="detailsSpan" style="text-transform: uppercase; letter-spacing: 2px;">
+                        <span class="" role="heading" aria-level="1"
+                            style="font-size: 28px; font-weight: bold; color:black;">Shoe</span>
                     </span>
                 </htag1>
             </div>
@@ -45,23 +44,16 @@
                             float: right;    display: block; height:100%;">
                     <div class="details" style="display: block;
                         padding-bottom:100%; margin-bottom:-100%;">
-                        <div class="primary-details"
-                            style="position: relative; display:block;
-                                margin-bottom: 0px;
-                                padding: 0 0 20px 0;"   >
-                            <span id="recently-viewed-info" class="no-display" 
-                                recently-view-name="DANDELION" recently-view-url="http://us.christianlouboutin.com/ca_en/shop/men/dandelion-flat.html" 
-                                recently-view-image="https://images.us.christianlouboutin.com/media/catalog/product/cache/1/small_image/50x50/9df78eab33525d08d6e5fb8d27136e95/1/1/5/0/christianlouboutin-dandelion-1150564_BK01_1_1200x1200_1545133916_1.jpg"
-                                style="display: none !important;">
-                            </span>
-                            <span class="product-name title-cap"
+                        <div class=""
+                            style="position: relative; display:block; margin-bottom: 0px; padding: 0 0 20px 0;"   >
+                            <span class=""
                                 style="display: block;
                                     width: 100%;
                                     color: #000;
                                     font-weight: 400;
-                                    font-size: 1.4em;
+                                    font-size: 22px;
                                     text-align: center;
-                                    margin: 15px 0 8px 0;text-transform: capitalize !important;">dandelion</span>
+                                    margin: 15px 0 8px 0;text-transform: capitalize !important;">Brand</span>
                             <div class="price-box" style="display: block;">
                                 <span class="regular-price" id="product_id" style="display: block;">
                                     <span class="price" 
@@ -75,14 +67,14 @@
                         <div class="description" style="border-top: 1px dotted #d0d0d0;
                             border-bottom: 1px dotted #d0d0d0;
                             font-weight: normal;
-                            font-size: 11px;
-                            text-align: center;
+                            font-size: 13px;
+                            text-align: justify;
                             padding: 20px;
                             margin: 15px 0;
                             position: relative;
                             line-height: 17px;
                             letter-spacing: 0.0225em;">
-                            djhdbsgfjddjchvdsjhdsvdsv!
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                         </div>
                         <a data-gtm-event-click="{&quot;event&quot;:&quot;gtm.ext.event&quot;,&quot;eventTmp&quot;:&quot;enhancedEcommerce&quot;,&quot;eventCategory&quot;:&quot;enhancedEcommerce&quot;,&quot;eventAction&quot;:&quot;addToWishlist&quot;,&quot;eventLabel&quot;:&quot;Dandelion&quot;,&quot;ecommerce&quot;:{&quot;currencyCode&quot;:&quot;CAD&quot;,&quot;add&quot;:{&quot;products&quot;:[{&quot;name&quot;:&quot;Dandelion&quot;,&quot;id&quot;:&quot;1150564BK01&quot;,&quot;price&quot;:&quot;1095.00&quot;,&quot;dimension2&quot;:&quot;black&quot;,&quot;category&quot;:&quot;men shoes&quot;}]}}}" 
                             data-label="Add To Wishlist" data-action="Product Page" data-category="Product Page" 
@@ -105,6 +97,5 @@
                 </section>
             </div>
         </div>
-    </div>
     </body>
-    </html>
+</html>
