@@ -78,7 +78,7 @@
                         <form action="/examples/actions/confirmation.php" method="post">
                             <div class="form-group">
                                 <input type="text" class="form-control" name="firstname" placeholder="First Name" required="required" style="width:49%; display:inline-block;">
-                                <input type="text" class="form-control" name="lastname" placeholder="Last Name" required="required" style="width:50%; display:inline-block;">		
+                                <input type="text" class="form-control" name="lastname" placeholder="Last Name" required="required" style="width:49%; display:inline-block;">		
                             </div>
                             <div class="form-group">
                                 <input type="text" class="form-control" name="username" placeholder="Username" required="required">		

@@ -11,54 +11,156 @@
 
 
 <link rel="stylesheet" href="../styles/contactpage.css">
+<style>
+    .contactDiv1{
+        width: 100%;
+        min-height: 100vh; 
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        padding: 15px;
+        background: transparent;
+        position: relative;
+        z-index: 1;
+    }
 
+    .contactForm{
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding-bottom: 68px;
+    }
 
+    .contactSpan1{
+        display: block;
+        width: 100%;
+        font-size: 39px;
+        color: #333333;
+        line-height: 1.2;
+        text-align: left;
+        padding-bottom: 44px;
+    }
+
+    .contactInputDiv{
+        position: relative;
+        border-bottom: 2px solid #d9d9d9;
+        padding-bottom: 13px;
+        margin-bottom: 65px; 
+        width:100%;
+    }
+
+    .contactInputSpan1{
+        font-size: 15px;
+        color: #999999;
+        line-height: 1.5;
+        padding-left: 5px;
+    }
+
+    .contactInput{
+        display: block;
+        width: 100%;
+        background: transparent;
+        font-size: 18px;
+        color: #555555;
+        line-height: 1.2;
+        padding: 0 5px; 
+        height:40px;
+    }
+
+    .contactInputSpan2{
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+    }
+
+    .contactBtnDiv{
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: -25px; 
+        width:100%;
+    }
+
+    .contactBtn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 20px;
+        min-width: 160px;
+        height: 50px;
+        background-color: #ff4b5a;
+        border-radius: 25px;
+        font-size: 16px;
+        color: #fff;
+        line-height: 1.2;
+    }
+
+    .contacti{
+        -webkit-font-smoothing: antialiased;
+        display: inline-block;
+        font-style: normal;
+        font-variant: normal;
+        text-rendering: auto;
+        line-height: 1;
+    }
+
+    .contactThanksSpan{
+        font-size: 14px;
+        color: #999999;
+        line-height: 1.5;
+    }
+</style>
+    
 
 </head>
 <body>
-    <div class="container-contact100">
-        <div class="wrap_contact100" style="display: block;">
+    <div class="contactDiv1" style="">
+        <div class="" style="display: block;">
 
-            <form class="contact100-form validate-form">
-                <span class="contact100-form-title">Contact Us</span>
+            <form class="contactForm" style="">
+                <span class="contactSpan1" style="">Contact Us</span>
 
-                <div class="wrap-input100 rs1-wrap-input-100 validate-input 
-                    alert-validate" data-validate="Name is required">
+                <div class="contactInputDiv" data-validate="Name is required" style="">
                     <!--::before-->
-                    <span class="label-input100">Your Name</span>
-                    <input class="input100" type="text" name="name" placeholder="Enter your name">
-                    <span class="focus-input100"><!--::before--></span>
+                    <span class="contactInputSpan1">Your Name</span>
+                    <input class="contactInput" type="text" name="name" placeholder="Enter your name">
+                    <span class="contactInputSpan2"><!--::before--></span>
                     <!--::after-->
                 </div>
 
-                <div class="wrap-input100 rs1-wrap-input-100 validate-input 
-                    alert-validate" data-validate="Valid email is required: ex@abc.xyz">
+                <div class="contactInputDiv" data-validate="Valid email is required: ex@abc.xyz"
+                    style="">
                     <!--::before-->
-                    <span class="label-input100">Email</span>
-                    <input class="input100" type="email" name="email" placeholder="Enter your email">
-                    <span class="focus-input100"><!--::before--></span>
+                    <span class="contactInputSpan1" style="">Email</span>
+                    <input class="contactInput" type="email" name="email" placeholder="Enter your email" style="">
+                    <span class="contactInputSpan2" style=""><!--::before--></span>
                     <!--::after-->
                 </div>
 
-                <div class="wrap-input100 rs1-wrap-input-100 validate-input 
-                    alert-validate" data-validate="Message is required">
+                <div class="contactInputDiv" data-validate="Valid email is required: ex@abc.xyz"
+                    style="">
                     <!--::before-->
-                    <span class="label-input100">Message</span>
-                    <textarea class="input100" name="message" placeholder="Your message here..."></textarea>
-                    <span class="focus-input100"><!--::before--></span>
+                    <span class="contactInputSpan1">Message</span>
+                    <textarea class="contactInput" name="message" placeholder="Your message here..."></textarea>
+                    <span class="contactInputSpan2"><!--::before--></span>
                     <!--::after-->
                 </div>
 
-                <div class="container-contact100-form-btn">
-                    <button class="contact100-form-btn">
+                <div class="contactBtnDiv" style="">
+                    <button class="contactBtn" style="">
                         <span>
                             Submit
-                            <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"><!--::before--></i>
+                            <i class="contacti" aria-hidden="true" style=""><!--::before--></i>
                         </span>
                     </button>
                 </div>
             </form>
-            <span class="contact100-more">We thank you for your feedback!</span>
+            <span class="contactThanksSpan" style="">We thank you for your feedback!</span>
         </div>
     </div>
 
