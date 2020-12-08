@@ -10,12 +10,34 @@
         
 
     <body>
+
+    <?php
+        $inventory = $_GET['inventory'];
+        $product_select = $_GET['item'];
+        $prod_brand = $_GET['brandid'];  
+
+        switch($inventory){
+            case 'men': 
+                $sqlQuery = "SELECT * FROM men_inventory, brands WHERE men_inventory.Brand_ID = brands.Brand_ID  AND  brands.Brand_ID = '$prod_brand'  AND men_inventory.Product_ID ='$product_select'";
+            break;
+            case 'women': 
+                $sqlQuery = "SELECT * FROM women_inventory, brands WHERE women_inventory.Brand_ID = brands.Brand_ID  AND  brands.Brand_ID = '$prod_brand'  AND women_inventory.Product_ID ='$product_select'";
+            break;
+        }
+
+
+        $result = mysqli_query($dataconnection, $sqlQuery);
+    
+        $fetch = mysqli_fetch_array($result);
+    
+    ?>
+
         <div class="detailsContainer" style="margin-left:10%; margin-right:10%;" >
             <div class="detailsHeader" style="margin-left: 5%;padding: 30px 5px 15px 5px; line-height: 1.4px;  border-bottom: 1px solid #dededd;">
                 <htag1>
                     <span class="detailsSpan" style="text-transform: uppercase; letter-spacing: 2px;">
                         <span class="" role="heading" aria-level="1"
-                            style="font-size: 28px; font-weight: bold; color:black;">Shoe</span>
+                            style="font-size: 28px; font-weight: bold; color:black;"><?php echo $fetch['Product_Name']?></span>
                     </span>
                 </htag1>
             </div>
@@ -33,7 +55,7 @@
                                 width: 100%;
                                 height: 100%;display:flex;">
                             <img class="swiper-slide swiper-slide-duplicate" data-width="1200" 
-                                data-height="1200" data-src="" src="https://s7d9.scene7.com/is/image/HoltRenfrew1/m_5000143940_01" alt-data-swiper-slide-index="0"
+                                data-height="1200" data-src="" src="<?php echo $fetch['Product_Img']?>" alt-data-swiper-slide-index="0"
                                 style="width:70%; margin-left:auto; margin-right:auto; position:relative;">
                         </div>
                     </div>
@@ -53,14 +75,14 @@
                                     font-weight: 400;
                                     font-size: 22px;
                                     text-align: center;
-                                    margin: 15px 0 8px 0;text-transform: capitalize !important;">Brand</span>
+                                    margin: 15px 0 8px 0;text-transform: capitalize !important;"><?php echo $fetch['Brand_Name']?></span>
                             <div class="price-box" style="display: block;">
                                 <span class="regular-price" id="product_id" style="display: block;">
                                     <span class="price" 
                                         style="font-size: 18px; width: 100%;
                                             display: block;
                                             text-align: center;
-                                            top: 15px;    font-weight: lighter;color: #222;">C$ 1,456.00</span>
+                                            top: 15px;    font-weight: lighter;color: #222;"><?php echo $fetch['Product_Price']?></span>
                                 </span>
                             </div>
                         </div>
@@ -74,12 +96,12 @@
                             position: relative;
                             line-height: 17px;
                             letter-spacing: 0.0225em;">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            <?php echo $fetch['Product_Description']?>
                         </div>
                         <a data-gtm-event-click="{&quot;event&quot;:&quot;gtm.ext.event&quot;,&quot;eventTmp&quot;:&quot;enhancedEcommerce&quot;,&quot;eventCategory&quot;:&quot;enhancedEcommerce&quot;,&quot;eventAction&quot;:&quot;addToWishlist&quot;,&quot;eventLabel&quot;:&quot;Dandelion&quot;,&quot;ecommerce&quot;:{&quot;currencyCode&quot;:&quot;CAD&quot;,&quot;add&quot;:{&quot;products&quot;:[{&quot;name&quot;:&quot;Dandelion&quot;,&quot;id&quot;:&quot;1150564BK01&quot;,&quot;price&quot;:&quot;1095.00&quot;,&quot;dimension2&quot;:&quot;black&quot;,&quot;category&quot;:&quot;men shoes&quot;}]}}}" 
                             data-label="Add To Wishlist" data-action="Product Page" data-category="Product Page" 
                             href="https://us.christianlouboutin.com/ca_en/wishlist/index/add/product/337065/form_key/uu2L16tsHt9InAbe/" 
-                            class="addToWishlist" onclick="productAddToCartForm.submitLight(this, 'https://us.christianlouboutin.com/ca_en/wishlist/index/add/product/337065/form_key/uu2L16tsHt9InAbe/'); return false;"
+                            class="addToWishlist" onclick=""
                             style="display: block;
                                 position: relative;
                                 border-top: 1px dotted #D8D8D8;

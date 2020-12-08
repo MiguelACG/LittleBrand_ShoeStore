@@ -1,3 +1,18 @@
+.detailsContainer{
+    margin-left:10%; margin-right:10%;
+}
+
+.detailsProductMain{
+    width: 50%;
+    float: left;
+                        margin: 0 auto;
+                        position: relative;
+                        display: block; font-size: 13px;
+                        padding-bottom:100%; margin-bottom:-100%;
+}
+
+
+
 .div1{
 	border-top: 0.0625rem solid #e5e5e5;
     border-bottom: 0.0625rem solid #e5e5e5;
@@ -341,5 +356,7 @@
   	margin: 1%;
   	padding: 0;
 }
+
+
 
 

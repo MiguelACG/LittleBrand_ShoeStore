@@ -4340,7 +4340,7 @@
   margin-right: 0.125rem;
   margin-bottom: 0.25rem; }
 
-@charset "UTF-8";
+
 /*
  * Return the rem of a pixel's value
  *
@@ -17059,8 +17059,7 @@
  * Sample: ratio(16, 9)
  * Result: 56.25%
  */
-.cards-slider {
-  /* To keep the same height for each item */ }
+
   .cards-slider .card-item {
     height: 100%;
     box-shadow: 0 0.3125rem 1.25rem 0rem rgba(0, 0, 0, 0.3); }
@@ -25122,10 +25121,6 @@
       position: relative;
       flex-basis: calc((100% - 3 * 2.77778%) / 4);
       margin-bottom: 2.77778%; }
-    .universe-grid--with-cover {
-      /* one item */
-      /* three items */
-      /* four items */ }
       .universe-grid--with-cover > *:nth-child(1) {
         flex-basis: 100%; }
       .universe-grid--with-cover > *:nth-child(2):nth-last-child(2),
@@ -25159,9 +25154,7 @@
       .universe-grid > * {
         flex-basis: calc((100% - 1.25rem) / 2);
         margin-bottom: 1.25rem; }
-      .universe-grid--with-cover {
-        /* three items */
-        /* four items */ }
+
         .universe-grid--with-cover > *:nth-child(2):nth-last-child(2),
         .universe-grid--with-cover > *:nth-child(3):nth-last-child(1) {
           flex-basis: calc((100% - 1.25rem) / 2); }

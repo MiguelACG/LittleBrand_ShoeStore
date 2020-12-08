@@ -225,7 +225,7 @@
 
                 $womenDivHTML .='<li class="productLi" data-object-id="prd-123">';// add css classes and the like here. In case you don't know, the .= operators concatenate the strings that will make your html code.
                 $womenDivHTML .='    <div class="productDiv2">'; // be careful with this class, as you might need to evaluate it for every run of the loop
-                $womenDivHTML.='        <a class="productA" href="index.php?page=store&item=item">';
+                $womenDivHTML.='        <a class="productA" href="index.php?page=store&inventory=women&item='.$fetch['Product_ID'].'&brandid='.$fetch['Brand_ID'].'">';
                 $womenDivHTML .='            <div class="productDiv3">';
                 $womenDivHTML.='                 <div class="productDiv4">';
                 $womenDivHTML .='                     <img class="productImg" src="'.$fetch['Product_Img'].'" alt="" />';
