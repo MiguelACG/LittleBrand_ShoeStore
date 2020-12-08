@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -8,6 +9,7 @@
     </head>
 
     <body>
+   
         <div class="productPageContainer">
             <h1 class="pageTitleHeader" style="">
                 <span class="headerSpan">Men's Shoes</span>
@@ -199,90 +201,42 @@
                 </div>
             </div>
 
+            <?php 
+             $sqlQuery = "SELECT * FROM men_inventory";
 
+             $result = mysqli_query($dataconnection, $sqlQuery);
 
+             $menDivHTML = '<div class="productDiv" data-query="women-all-shoes">';
 
-            <!--Products-->
-            <div class="productDiv1" data-query="women-all-shoes">
-                <ul class="productUl">
-                    <li class="productLi" data-object-id="prd-123">
-                        <div class="productDiv2">
-                            <a class="productA" href="">
-                                <div class="productDiv3">
-                                    <div class="productDiv4">
-                                        <img class="productImg" src="https://s7d9.scene7.com/is/image/HoltRenfrew1/m_5000143940_01">
-                                    </div>
-                                </div>
-                                
-                                <div class="productDiv5">
-                                    <span class="productSpan1">
-                                        <span class="">Dior Chez Moi Slide</span>
-                                    </span>
-                                    <p class="productP">Blue Dior BLAH</p> 
-                                </div>
-                            </a>
-                        </div>
-                    </li>
+             $menDivHTML = '<ul class="productUl">';
 
-                    <li class="productLi" data-object-id="prd-123">
-                        <div class="productDiv2">
-                            <a class="productA" href="">
-                                <div class="productDiv3">
-                                    <div class="productDiv4">
-                                        <img class="productImg" src="https://s7d9.scene7.com/is/image/HoltRenfrew1/m_5000143940_01">
-                                    </div>
-                                </div>
-                                
-                                <div class="productDiv5">
-                                    <span class="productSpan1">
-                                        <span class="">Dior Chez Moi Slide</span>
-                                    </span>
-                                    <p class="productP">Blue Dior BLAH</p> 
-                                </div>
-                            </a>
-                        </div>
-                    </li>
+             while($fetch = mysqli_fetch_array($result)){
 
-                    <li class="productLi" data-object-id="prd-123">
-                        <div class="productDiv2">
-                            <a class="productA" href="">
-                                <div class="productDiv3">
-                                    <div class="productDiv4">
-                                        <img class="productImg" src="https://s7d9.scene7.com/is/image/HoltRenfrew1/m_5000143940_01">
-                                    </div>
-                                </div>
-                                
-                                <div class="productDiv5">
-                                    <span class="productSpan1">
-                                        <span class="">Dior Chez Moi Slide</span>
-                                    </span>
-                                    <p class="productP">Blue Dior BLAH</p> 
-                                </div>
-                            </a>
-                        </div>
-                    </li>
+                $menDivHTML .='<li class="productLi" data-object-id="prd-123">';// add css classes and the like here. In case you don't know, the .= operators concatenate the strings that will make your html code.
+                $menDivHTML .='    <div class="productDiv2">'; // be careful with this class, as you might need to evaluate it for every run of the loop
+                $menDivHTML.='        <a class="productA" href="">';
+                $menDivHTML .='            <div class="productDiv3">';
+                $menDivHTML .='                 <div class="productDiv4">';
+                $menDivHTML .='                     <img class="productImg" src="'.$fetch['Product_Img'].'" alt="" />';
+                $menDivHTML.='                  </div>';
+                $menDivHTML .='             </div>';
+                $menDivHTML .='             <div class="productDiv5">';
+                $menDivHTML .='                 <span class="productSpan1">';
+                $menDivHTML .='                     <span class="">'.$fetch['Product_Name'].'</span>';
+                $menDivHTML .='                 </span>';
+                $menDivHTML .='                 <p class="productP">'.$fetch['Product_Color'].'</p> ';
+                $menDivHTML .='              </div>';
+                $menDivHTML .='         </a>';
+                $menDivHTML .='     </div>';
+                $menDivHTML .=' </li>';
+            }
+            $menDivHTML .= '</ul>';
+            $menDivHTML .= '</div>';
 
-                    <li class="productLi" data-object-id="prd-123">
-                        <div class="productDiv2">
-                            <a class="productA" href="">
-                                <div class="productDiv3">
-                                    <div class="productDiv4">
-                                        <img class="productImg" src="https://s7d9.scene7.com/is/image/HoltRenfrew1/m_5000143940_01">
-                                    </div>
-                                </div>
-                                
-                                <div class="productDiv5">
-                                    <span class="productSpan1">
-                                        <span class="">Dior Chez Moi Slide</span>
-                                    </span>
-                                    <p class="productP">Blue Dior BLAH</p> 
-                                </div>
-                            </a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
+            ?>
 
+            <?php  echo $menDivHTML; ?>
+            
         </div>
 
     </body>

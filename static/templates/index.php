@@ -19,6 +19,7 @@
 <body>
 
     <?php
+        include '../scripts/signupconfirm.php';
 
         $dbuser = 'root';
         $dbpassword = '';
@@ -38,6 +39,12 @@
             case 'brands': include_once('brands.php'); break;
             case 'contact': include_once('contact.php'); break;
             default : include_once('main.php');break;
+        }
+
+        if(isset($_POST['signup'])){
+   
+            insert_data($dataconnection); 
+
         }
 
     ?>

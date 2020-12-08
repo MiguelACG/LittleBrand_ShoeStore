@@ -75,20 +75,25 @@
                         <button type="button" style="margin-left:0;" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
                     <div class="modal-body">
-                        <form action="/examples/actions/confirmation.php" method="post">
+                        <form action="index.php" method="post">
                             <div class="form-group">
                                 <input type="text" class="form-control" name="firstname" placeholder="First Name" required="required" style="width:49%; display:inline-block;">
                                 <input type="text" class="form-control" name="lastname" placeholder="Last Name" required="required" style="width:49%; display:inline-block;">		
                             </div>
+
                             <div class="form-group">
-                                <input type="text" class="form-control" name="username" placeholder="Username" required="required">		
+                                <input type="text" class="form-control" name="email" placeholder="Email" required="required">		
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="phone" placeholder="Phone" required="required">		
                             </div>
                             
                             <div class="form-group">
                                 <input type="password" class="form-control" name="password" placeholder="Password" required="required">	
                             </div>        
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary btn-lg btn-block login-btn" style="float:left;">Sign Up</button>
+                                <button  type="submit" name="signup" class="btn btn-primary btn-lg btn-block login-btn" style="float:left;" >Sign Up</button>
                             </div>
                         </form>
                     </div>

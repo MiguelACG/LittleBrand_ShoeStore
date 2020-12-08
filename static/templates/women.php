@@ -211,90 +211,42 @@
                 </div>
             </div>
 
-
-
-
             <!--Products-->
-            <div class="productDiv1" data-query="women-all-shoes">
-                <ul class="productUl">
-                    <li class="productLi" data-object-id="prd-123">
-                        <div class="productDiv2">
-                            <a class="productA" href="">
-                                <div class="productDiv3">
-                                    <div class="productDiv4">
-                                        <img class="productImg" src="https://s7d9.scene7.com/is/image/HoltRenfrew1/m_5000143940_01">
-                                    </div>
-                                </div>
-                                
-                                <div class="productDiv5">
-                                    <span class="productSpan1">
-                                        <span class="">Dior Chez Moi Slide</span>
-                                    </span>
-                                    <p class="productP">Blue Dior BLAH</p> 
-                                </div>
-                            </a>
-                        </div>
-                    </li>
+            <?php 
+             $sqlQuery = "SELECT * FROM women_inventory";
 
-                    <li class="productLi" data-object-id="prd-123">
-                        <div class="productDiv2">
-                            <a class="productA" href="">
-                                <div class="productDiv3">
-                                    <div class="productDiv4">
-                                        <img class="productImg" src="https://s7d9.scene7.com/is/image/HoltRenfrew1/m_5000143940_01">
-                                    </div>
-                                </div>
-                                
-                                <div class="productDiv5">
-                                    <span class="productSpan1">
-                                        <span class="">Dior Chez Moi Slide</span>
-                                    </span>
-                                    <p class="productP">Blue Dior BLAH</p> 
-                                </div>
-                            </a>
-                        </div>
-                    </li>
+             $result = mysqli_query($dataconnection, $sqlQuery);
 
-                    <li class="productLi" data-object-id="prd-123">
-                        <div class="productDiv2">
-                            <a class="productA" href="">
-                                <div class="productDiv3">
-                                    <div class="productDiv4">
-                                        <img class="productImg" src="https://s7d9.scene7.com/is/image/HoltRenfrew1/m_5000143940_01">
-                                    </div>
-                                </div>
-                                
-                                <div class="productDiv5">
-                                    <span class="productSpan1">
-                                        <span class="">Dior Chez Moi Slide</span>
-                                    </span>
-                                    <p class="productP">Blue Dior BLAH</p> 
-                                </div>
-                            </a>
-                        </div>
-                    </li>
+             $womenDivHTML = '<div class="productDiv" data-query="women-all-shoes">';
 
-                    <li class="productLi" data-object-id="prd-123">
-                        <div class="productDiv2">
-                            <a class="productA" href="">
-                                <div class="productDiv3">
-                                    <div class="productDiv4">
-                                        <img class="productImg" src="https://s7d9.scene7.com/is/image/HoltRenfrew1/m_5000143940_01">
-                                    </div>
-                                </div>
-                                
-                                <div class="productDiv5">
-                                    <span class="productSpan1">
-                                        <span class="">Dior Chez Moi Slide</span>
-                                    </span>
-                                    <p class="productP">Blue Dior BLAH</p> 
-                                </div>
-                            </a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
+             $womenDivHTML = '<ul class="productUl">';
 
+             while($fetch = mysqli_fetch_array($result)){
+
+                $womenDivHTML .='<li class="productLi" data-object-id="prd-123">';// add css classes and the like here. In case you don't know, the .= operators concatenate the strings that will make your html code.
+                $womenDivHTML .='    <div class="productDiv2">'; // be careful with this class, as you might need to evaluate it for every run of the loop
+                $womenDivHTML.='        <a class="productA" href="">';
+                $womenDivHTML .='            <div class="productDiv3">';
+                $womenDivHTML.='                 <div class="productDiv4">';
+                $womenDivHTML .='                     <img class="productImg" src="'.$fetch['Product_Img'].'" alt="" />';
+                $womenDivHTML.='                  </div>';
+                $womenDivHTML .='             </div>';
+                $womenDivHTML .='             <div class="productDiv5">';
+                $womenDivHTML .='                 <span class="productSpan1">';
+                $womenDivHTML .='                     <span class="">'.$fetch['Product_Name'].'</span>';
+                $womenDivHTML .='                 </span>';
+                $womenDivHTML .='                 <p class="productP">'.$fetch['Product_Color'].'</p> ';
+                $womenDivHTML.='              </div>';
+                $womenDivHTML .='         </a>';
+                $womenDivHTML.='     </div>';
+                $womenDivHTML.=' </li>';
+            }
+            $womenDivHTML .= '</ul>';
+            $womenDivHTML .= '</div>';
+
+            ?>
+
+            <?php  echo $womenDivHTML; ?>
         </div>
 
     </body>
