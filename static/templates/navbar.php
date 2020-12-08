@@ -1,4 +1,6 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light"><a href="#" class="navbar-brand d-lg-none">Gridbox</a>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light" >
+<a href="#" class="navbar-brand d-lg-none">Gridbox</a>
 <button type="button" data-toggle="collapse" data-target="#navigations-02" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
         <a href="index.php?page=main" class="navbar-brand mr-0">Little Brand Shoe Store</a>
         <div id="navigations-02" class="collapse navbar-collapse justify-content-md-center">
@@ -7,8 +9,7 @@
                 <a href="index.php?page=collections" class="nav-link active">Collections<span class="sr-only">(current)</span></a>
                 <a href="index.php?page=women" class="nav-link">Women</a>
                 <a href="index.php?page=men" class="nav-link">Men</a>
-                <a href="index.php?page=kids" class="nav-link">Kids</a>
-                <a href="index.php?page=brands" class="nav-link">Brands</a>
+                <a href="index.php?page=about" class="nav-link">About</a>
                 <a href="index.php?page=contact" class="nav-link">Contact</a>
                 <li class="nav-item mr-2"></li>
             </ul>
@@ -27,7 +28,7 @@
         </div>
 
         <!--Modify Href for login and cart screen-->
-        <a href="#signInModal" class="nav-link" data-toggle="modal">Login</a> /
+        <a href="#signInModal" id="login" class="nav-link" data-toggle="modal">Login</a>
         <a href="#signUpModal" class="nav-link" data-toggle="modal">SignUp</a>
         <a href="#" class="nav-link mt-1"><i class="fa fa-search"></i></a>
         <span id="iiyli">Cart</span>
@@ -45,16 +46,16 @@
                         <button type="button" style="margin-left:0;" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
                     <div class="modal-body">
-                        <form action="/examples/actions/confirmation.php" method="post">
+                        <form action="index.php" method="post">
                             <div class="form-group">
-                                <input type="text" class="form-control" name="username" placeholder="Username" required="required">		
+                                <input type="text" class="form-control" name="singinemail" placeholder="Email" required="required">		
                             </div>
                             
                             <div class="form-group">
-                                <input type="password" class="form-control" name="password" placeholder="Password" required="required">	
+                                <input type="password" class="form-control" name="signinpassword" placeholder="Password" required="required">	
                             </div>        
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary btn-lg btn-block login-btn" style="float:left;">Login</button>
+                                <button type="submit" name="signin" class="btn btn-primary btn-lg btn-block login-btn" style="float:left;">Login</button>
                             </div>
                         </form>
                     </div>

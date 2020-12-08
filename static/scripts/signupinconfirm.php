@@ -20,6 +20,24 @@
         }
     }
 
+    function sign_in_confirm($connection){
+        $singInEmail = legal_input($_POST['signinemail']);
+        $singInPassword = legal_input($_POST['signinpassword']);
+
+        $query = "SELECT `Customer_ID` FROM `customers` WHERE `Cust_Email_Address` = '$singInEmail' AND `Cust_Password` = '$singInPassword'";
+
+        $exec = mysqli_query($connection, $query);
+
+        if($exec > 0){
+             setcookie('SIGNEDIN', $singInEmail, time()+3600);
+            echo '<script>alert( "Signed In")</script>';
+
+            echo $singInEmail;
+            
+            return $_COOKIE['SIGNEDIN'];
+        }
+    }
+
 
     function legal_input($value) {
         $value = trim($value);
@@ -27,4 +45,6 @@
         $value = htmlspecialchars($value);
         return $value;
     }
+
+    
 ?>

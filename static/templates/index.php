@@ -12,18 +12,20 @@
         crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&amp;family=Source+Sans+Pro:wght@300&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../scripts/changeElements.js"></script>
     <link rel="stylesheet" href="../styles/styles.css">
 
 </head>
 
 <body>
-
     <?php
-        include '../scripts/signupconfirm.php';
+        include '../scripts/signupinconfirm.php';
 
         $dbuser = 'root';
         $dbpassword = '';
         $db = 'littlebranddb';
+        $signedCookie;
 
         $dataconnection = new mysqli('localhost', $dbuser, $dbpassword, $db) or die('Could not find host db');
         
@@ -35,16 +37,20 @@
             case 'collections': include_once('collections.php'); break;
             case 'women': include_once('women.php'); break;
             case 'men': include_once('men.php'); break;
-            case 'kids': include_once('kids.php'); break;
-            case 'brands': include_once('brands.php'); break;
+            case 'about': include_once('about.php'); break;
             case 'contact': include_once('contact.php'); break;
+            case 'store' : include_once('store.php'); break;
             default : include_once('main.php');break;
         }
 
         if(isset($_POST['signup'])){
    
             insert_data($dataconnection); 
+        }
 
+        if (isset($_POST['signin'])){
+            $signedCookie = sign_in_confirm($dataconnection);
+            
         }
 
     ?>
