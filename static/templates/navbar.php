@@ -6,10 +6,10 @@
         <div id="navigations-02" class="collapse navbar-collapse justify-content-md-center">
             <ul class="navbar-nav justify-content-end">
                 <li class="nav-item mr-2"></li>
-                <a href="index.php?page=collections" class="nav-link active">Collections<span class="sr-only">(current)</span></a>
+                <a href="index.php?page=collections" class="nav-link ">Collections<!--<span class="sr-only">(current)</span> (active was in the class)--></a>
                 <a href="index.php?page=women" class="nav-link">Women</a>
                 <a href="index.php?page=men" class="nav-link">Men</a>
-                <a href="index.php?page=about" class="nav-link">About</a>
+                <a href="index.php?page=about&brandid=16" class="nav-link">About</a>
                 <a href="index.php?page=contact" class="nav-link">Contact</a>
                 <li class="nav-item mr-2"></li>
             </ul>
@@ -28,7 +28,7 @@
         </div>
 
         <!--Modify Href for login and cart screen-->
-        <a href="#signInModal" id="login" class="nav-link" data-toggle="modal">Login</a>
+        <a href="#signInModal" id="login" class="nav-link" data-toggle="modal">Login</a> /
         <a href="#signUpModal" class="nav-link" data-toggle="modal">SignUp</a>
         <a href="#" class="nav-link mt-1"><i class="fa fa-search"></i></a>
         <span id="iiyli">Cart</span>

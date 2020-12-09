@@ -15,7 +15,7 @@
             
             <!--Filter Bar-->
             <div class="div1">
-                <div class="div2">
+                <div class="div2" style="width:100%;">
                     <div class="dropdown">
                     <!--Loads all Women's Shoes-->
                         <button class="dropbtn filterBtn">All Shoes</button>
@@ -106,25 +106,25 @@
                                 </span>
                             </span>
                         </button>
-                        <div class="dropdown-content">
+                        <div class="dropdown-content" method="post">
                             <label class="colorChoices">Boots
-                                <input type="checkbox">
+                                <input type="checkbox" name="model[]" value="Boots">
                                 <span class="checkmark"></span>
                             </label>
                             <label class="colorChoices">Pumps
-                                <input type="checkbox">
+                                <input type="checkbox" name="model[]" value="Pumps">
                                 <span class="checkmark"></span>
                             </label>
                             <label class="colorChoices">Sandals
-                                <input type="checkbox">
+                                <input type="checkbox" name="model[]" value="Sandals">
                                 <span class="checkmark"></span>
                             </label>
                             <label class="colorChoices">Slides
-                                <input type="checkbox">
+                                <input type="checkbox" name="model[]" value="Slides">
                                 <span class="checkmark"></span>
                             </label>
                             <label class="colorChoices">Sneakers
-                                <input type="checkbox">
+                                <input type="checkbox" name="model[]" value="Sneakers">
                                 <span class="checkmark"></span>
                             </label>
                         </div>
@@ -141,51 +141,51 @@
                         </button>
                         <div class="dropdown-content">
                             <label class="colorChoices">Black
-                                <input type="checkbox">
+                                <input type="checkbox" value="Black">
                                 <span class="checkmark"></span>
                             </label>
                             <label class="colorChoices">Crystal
-                                <input type="checkbox">
+                                <input type="checkbox" value="Crystal">
                                 <span class="checkmark"></span>
                             </label>
                             <label class="colorChoices">Gold
-                                <input type="checkbox">
+                                <input type="checkbox" value="Gold">
                                 <span class="checkmark"></span>
                             </label>
                             <label class="colorChoices">Green
-                                <input type="checkbox">
+                                <input type="checkbox" value="Green">
                                 <span class="checkmark"></span>
                             </label>
                             <label class="colorChoices">Grey
-                                <input type="checkbox">
+                                <input type="checkbox" value="Grey">
                                 <span class="checkmark"></span>
                             </label>
                             <label class="colorChoices">Nude
-                                <input type="checkbox">
+                                <input type="checkbox" value="Nude">
                                 <span class="checkmark"></span>
                             </label>
                             <label class="colorChoices">Pink
-                                <input type="checkbox">
+                                <input type="checkbox" value="Pink">
                                 <span class="checkmark"></span>
                             </label>
                             <label class="colorChoices">Red
-                                <input type="checkbox">
+                                <input type="checkbox" value="Red">
                                 <span class="checkmark"></span>
                             </label>
                             <label class="colorChoices">Silver
-                                <input type="checkbox">
+                                <input type="checkbox" value="Silver">
                                 <span class="checkmark"></span>
                             </label>
                             <label class="colorChoices">Turquoise
-                                <input type="checkbox">
+                                <input type="checkbox" value="Turquoise">
                                 <span class="checkmark"></span>
                             </label>
                             <label class="colorChoices">White
-                                <input type="checkbox">
+                                <input type="checkbox" value="White">
                                 <span class="checkmark"></span>
                             </label>
                             <label class="colorChoices">Yellow
-                                <input type="checkbox">
+                                <input type="checkbox" value="Yellow">
                                 <span class="checkmark"></span>
                             </label>
                         </div>
@@ -207,46 +207,70 @@
                             <a href="#">Link 3</a>
                         </div>
                     </div>
+                    <div class="filterSeparator">
+                        <div></div>
+                    </div>
+                    <div class="dropdown" style="float:right;" method="post">
+                    <!--Loads all Women's Shoes-->
+                        <input class="dropbtn filterBtn" type="submit" name="submit" value="Sort"/>
+                    </div>
             
                 </div>
             </div>
 
+            <!--Sort Btn-->
+            <?php 
+            $htmlWHY='WHY';
+            if(isset($_POST['submit'])){
+                $htmlWHY.='okaaayyyyy';
+                if(!empty($_POST['model'])){
+                    foreach($_POST['model'] as $checked){
+                        $htmlWHY .= $checked;
+                    }
+                }
+            }
+            echo $htmlWHY;
+
+            ?>
+
             <!--Products-->
             <?php 
-             $sqlQuery = "SELECT * FROM women_inventory";
+                $sqlQuery = "SELECT * FROM women_inventory";
 
-             $result = mysqli_query($dataconnection, $sqlQuery);
+                $result = mysqli_query($dataconnection, $sqlQuery);
 
-             $womenDivHTML = '<div class="productDiv" data-query="women-all-shoes">';
+                $womenDivHTML = '<div class="productDiv" data-query="women-all-shoes">';
 
-             $womenDivHTML = '<ul class="productUl">';
+                $womenDivHTML = '<ul class="productUl" style="width:80%; margin-left:auto; margin-right:auto;">';
 
-             while($fetch = mysqli_fetch_array($result)){
+                while($fetch = mysqli_fetch_array($result)){
 
-                $womenDivHTML .='<li class="productLi" data-object-id="prd-123">';// add css classes and the like here. In case you don't know, the .= operators concatenate the strings that will make your html code.
-                $womenDivHTML .='    <div class="productDiv2">'; // be careful with this class, as you might need to evaluate it for every run of the loop
-                $womenDivHTML.='        <a class="productA" href="index.php?page=store&inventory=women&item='.$fetch['Product_ID'].'&brandid='.$fetch['Brand_ID'].'">';
-                $womenDivHTML .='            <div class="productDiv3">';
-                $womenDivHTML.='                 <div class="productDiv4">';
-                $womenDivHTML .='                     <img class="productImg" src="'.$fetch['Product_Img'].'" alt="" />';
-                $womenDivHTML.='                  </div>';
-                $womenDivHTML .='             </div>';
-                $womenDivHTML .='             <div class="productDiv5">';
-                $womenDivHTML .='                 <span class="productSpan1">';
-                $womenDivHTML .='                     <span class="">'.$fetch['Product_Name'].'</span>';
-                $womenDivHTML .='                 </span>';
-                $womenDivHTML .='                 <p class="productP">'.$fetch['Product_Color'].'</p> ';
-                $womenDivHTML.='              </div>';
-                $womenDivHTML .='         </a>';
-                $womenDivHTML.='     </div>';
-                $womenDivHTML.=' </li>';
-            }
-            $womenDivHTML .= '</ul>';
-            $womenDivHTML .= '</div>';
+                    $womenDivHTML .='<li class="productLi" data-object-id="prd-123">';// add css classes and the like here. In case you don't know, the .= operators concatenate the strings that will make your html code.
+                    $womenDivHTML .='    <div class="productDiv2">'; // be careful with this class, as you might need to evaluate it for every run of the loop
+                    $womenDivHTML.='        <a class="productA" href="index.php?page=store&inventory=women&item='.$fetch['Product_ID'].'&brandid='.$fetch['Brand_ID'].'">';
+                    $womenDivHTML .='            <div class="productDiv3">';
+                    $womenDivHTML.='                 <div class="productDiv4">';
+                    $womenDivHTML .='                     <img class="productImg" src="'.$fetch['Product_Img'].'" alt="" />';
+                    $womenDivHTML.='                  </div>';
+                    $womenDivHTML .='             </div>';
+                    $womenDivHTML .='             <div class="productDiv5">';
+                    $womenDivHTML .='                 <span class="productSpan1">';
+                    $womenDivHTML .='                     <span class="">'.$fetch['Product_Name'].'</span>';
+                    $womenDivHTML .='                 </span>';
+                    $womenDivHTML .='                 <p class="productP">'.$fetch['Product_Color'].'</p> ';
+                    $womenDivHTML.='              </div>';
+                    $womenDivHTML .='         </a>';
+                    $womenDivHTML.='     </div>';
+                    $womenDivHTML.=' </li>';
+                }
+                $womenDivHTML .= '</ul>';
+                $womenDivHTML .= '</div>';
 
             ?>
 
             <?php  echo $womenDivHTML; ?>
+
+            
         </div>
 
     </body>

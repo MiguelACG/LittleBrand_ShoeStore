@@ -9,14 +9,12 @@
 
     <?php
         $brandId=$_GET['brandid'];
+        
         $sqlQuery = "SELECT * FROM brands WHERE brands.Brand_ID = $brandId";
 
         $result = mysqli_query($dataconnection, $sqlQuery); 
-
-            //    $sqlQuery = "SELECT * FROM women_inventory, brands WHERE women_inventory.Brand_ID = brands.Brand_ID  AND  brands.Brand_ID = '$prod_brand'  AND women_inventory.Product_ID ='$product_select'";
     
         $fetch = mysqli_fetch_array($result);
-    
     ?>
 
     <body>

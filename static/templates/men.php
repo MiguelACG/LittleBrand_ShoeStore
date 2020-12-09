@@ -208,7 +208,7 @@
 
              $menDivHTML = '<div class="productDiv" data-query="women-all-shoes">';
 
-             $menDivHTML = '<ul class="productUl">';
+             $menDivHTML = '<ul class="productUl" style="width:80%; margin-left:auto; margin-right:auto;">';
 
              while($fetch = mysqli_fetch_array($result)){
 
