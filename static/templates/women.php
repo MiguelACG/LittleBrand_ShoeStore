@@ -193,7 +193,7 @@
                         </div>
                         <div class="filterSeparator"><div></div></div>
                         <div class="dropdown">
-                            <button class="dropbtn">Sort By
+                            <button class="dropbtn">Filter By
                                 <span class="span1">
                                     <span aria-hidden="true" class="span2" color="black">
                                         <svg viewBox="0 0 129 129">
@@ -203,15 +203,28 @@
                                 </span>
                             </button>
                             <div class="dropdown-content">
-                                <a href="#">Link 1</a>
-                                <a href="#">Link 2</a>
-                                <a href="#">Link 3</a>
+                                <label class="colorChoices">A-Z
+                                    <input type="radio" name="filter[]" value="AZ">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="colorChoices">Z-A
+                                    <input type="radio" name="filter[]" value="ZA">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="colorChoices">Price Ascending
+                                    <input type="radio" name="filter[]" value="PA">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="colorChoices">Price Descending
+                                    <input type="radio" name="filter[]" value="PD">
+                                    <span class="checkmark"></span>
+                                </label>
                             </div>
                         </div>
                         <div class="filterSeparator">
                             <div></div>
                         </div>
-                        <div class="dropdown" method="post">
+                        <div class="dropdown">
                         <!--Loads all Women's Shoes-->
                             <input class="dropbtn filterBtn" type="submit" name="submit" value="Sort"/>
                         </div>
@@ -245,6 +258,29 @@
                         $sqlQuery = "SELECT * FROM women_inventory WHERE Brand_ID IN('$allSelectedBrands')";
                         echo $sqlQuery;
                         displayProducts($dataconnection, $sqlQuery);
+                    }
+                    elseif(!empty($_POST['filter'])){
+                        foreach($_POST['filter'] as $chosenFilter){
+                            $filterBy = $chosenFilter;
+                        }
+                        switch($filterBy){
+                            case 'AZ':
+                                $sqlQuery = "SELECT * FROM women_inventory ORDER BY Product_Name ASC";
+                                displayProducts($dataconnection, $sqlQuery);
+                            break;
+                            case 'ZA':
+                                $sqlQuery = "SELECT * FROM women_inventory ORDER BY Product_Name DESC";
+                                displayProducts($dataconnection, $sqlQuery);
+                            break;
+                            case 'PA':
+                                $sqlQuery = "SELECT * FROM women_inventory ORDER BY Product_Price ASC";
+                                displayProducts($dataconnection, $sqlQuery);
+                            break;
+                            case 'PD':
+                                $sqlQuery = "SELECT * FROM women_inventory ORDER BY Product_Price DESC";
+                                displayProducts($dataconnection, $sqlQuery);
+                            break;
+                        }                        
                     }
                     else{
                         $sqlQuery = "SELECT * FROM women_inventory";
