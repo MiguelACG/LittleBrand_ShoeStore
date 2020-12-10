@@ -10,7 +10,6 @@
 
         $exec= mysqli_query($connection, $query);
 
-        $exec= mysqli_query($connection, $query);
         if($exec){
             echo '<script>alert("Your account has been created")</script>';
       
@@ -30,7 +29,7 @@
 
         if($exec > 0){
              setcookie('SIGNEDIN', $singInEmail, time()+3600);
-            echo '<script>alert( "Signed In")</script>';
+            echo '<script>alert( "Welcome '.$_COOKIE["SIGNEDIN"].'")</script>';
 
             echo $singInEmail;
             

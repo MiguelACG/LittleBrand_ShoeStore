@@ -112,17 +112,20 @@
     </style>
 </head>
 <?php 
+    //include '../scripts/signupinconfirm.php';
     
     if(isset($_POST['submit'])){
-        $name = $_REQUEST['name'];
-        $email = $_REQUEST['email'];
-        $message = $_REQUEST['message'];
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $message = $_POST['message'];
 
         $custIdQuery = "SELECT Customer_ID FROM customers WHERE customers.Cust_Email_Address = '$email'";
-        $customerId = mysqli_query($dataconnection, $custIdQuery);
+        $custIDresult = mysqli_fetch_array(mysqli_query($dataconnection, $custIdQuery));
 
-        $sqlquery = "INSERT INTO comments(Customer_ID, Comment) VALUES ($customerId, '$message')";
-        $exec = mysqli_query($connection, $sqlquery);
+        $customerId = $custIDresult['Customer_ID'];
+        
+        $sqlquery = "INSERT INTO cust_comments(Customer_ID, Comment) VALUES ($customerId, '$message')";
+        $exec = mysqli_query($dataconnection, $sqlquery);
         
 
        // echo $customerId;
