@@ -313,7 +313,7 @@
                             $womenDivHTML .='                 <span class="productSpan1">';
                             $womenDivHTML .='                     <span class="">'.$fetch['Product_Name'].'</span>';
                             $womenDivHTML .='                 </span>';
-                            $womenDivHTML .='                 <p class="productP">'.$fetch['Product_Color'].'</p> ';
+                            $womenDivHTML .='                 <p class="productP">'.$fetch['Product_Color'].'</p>';
                             $womenDivHTML.='              </div>';
                             $womenDivHTML .='         </a>';
                             $womenDivHTML.='     </div>';

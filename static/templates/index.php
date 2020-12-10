@@ -57,6 +57,7 @@
                 case 'about': include_once('about.php'); break;
                 case 'contact': include_once('contact.php'); break;
                 case 'store' : include_once('store.php'); break;
+                case 'cart' : include_once('cart.php'); break;
                 default : include_once('404.php');break;
             }
         }
