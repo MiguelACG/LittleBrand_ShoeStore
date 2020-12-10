@@ -6,7 +6,7 @@
         $phone = legal_input($_POST['phone]']); 
         $password = legal_input($_POST['password']);
 
-        $query= "INSERT INTO `customers` (`Customer_ID`, `Cust_Last_Name`, `Cust_First_Name`, `Cust_Phone_Number`, `Cust_Email_Address`, `Cust_Address_Line`, `Cust_City`, `Cust_Postal_Code`, `Cust_Gender`, `Cust_Password`) VALUES (NULL, '$last_name','$first_name','$phone','$email', NULL, NULL, NULL, NULL, '$password')";
+        $query= "INSERT INTO `customers` (`Cust_Last_Name`, `Cust_First_Name`, `Cust_Phone_Number`, `Cust_Email_Address`, `Cust_Address_Line`, `Cust_City`, `Cust_Postal_Code`, `Cust_Gender`, `Cust_Password`) VALUES ('$last_name','$first_name','$phone','$email', NULL, NULL, NULL, NULL, '$password')";
 
         $exec= mysqli_query($connection, $query);
 

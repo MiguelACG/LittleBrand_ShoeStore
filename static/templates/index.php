@@ -31,16 +31,21 @@
         
         include_once('navbar.php');
 
-        $page_select = $_GET['page'];
-        switch($page_select){
-            case 'main': include_once('main.php'); break;
-            case 'collections': include_once('collections.php'); break;
-            case 'women': include_once('women.php'); break;
-            case 'men': include_once('men.php'); break;
-            case 'about': include_once('about.php'); break;
-            case 'contact': include_once('contact.php'); break;
-            case 'store' : include_once('store.php'); break;
-            default : include_once('main.php');break;
+        if(!empty($_GET['page'])){
+            $page_select = $_GET['page'];
+            switch($page_select){
+                case 'main': include_once('main.php'); break;
+                case 'collections': include_once('collections.php'); break;
+                case 'women': include_once('women.php'); break;
+                case 'men': include_once('men.php'); break;
+                case 'about': include_once('about.php'); break;
+                case 'contact': include_once('contact.php'); break;
+                case 'store' : include_once('store.php'); break;
+                default : include_once('main.php');break;
+            }
+        }
+        else{
+            include_once('main.php');
         }
 
         if(isset($_POST['signup'])){
