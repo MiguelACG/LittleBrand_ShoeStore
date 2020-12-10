@@ -51,7 +51,7 @@
             $page_select = $_GET['page'];
             switch($page_select){
                 case 'main': include_once('main.php'); break;
-                case 'collections': include_once('collections.php'); break;
+                case 'collections': include_once('profile.php'); break;
                 case 'women': include_once('women.php'); break;
                 case 'men': include_once('men.php'); break;
                 case 'about': include_once('about.php'); break;
