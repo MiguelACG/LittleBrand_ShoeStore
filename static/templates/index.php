@@ -1,3 +1,27 @@
+<?php
+    include '../scripts/signupinconfirm.php';
+
+    $dbuser = 'root';
+        $dbpassword = '';
+        $db = 'littlebranddb';
+        $signedCookie;
+
+        $dataconnection = new mysqli('localhost', $dbuser, $dbpassword, $db) or die('Could not find host db');
+
+    if (isset($_POST['signin'])){
+        $signedCookie = sign_in_confirm($dataconnection);
+        
+        setcookie('SIGNEDIN', $signedCookie, time()+3600, '/');
+        
+        echo '<script>alert( "Welcome '.$_COOKIE['SIGNEDIN'].'")</script>';
+    }
+
+    if(isset($_POST['signup'])){
+   
+        insert_data($dataconnection); 
+    }
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -20,14 +44,6 @@
 
 <body>
     <?php
-        include '../scripts/signupinconfirm.php';
-
-        $dbuser = 'root';
-        $dbpassword = '';
-        $db = 'littlebranddb';
-        $signedCookie;
-
-        $dataconnection = new mysqli('localhost', $dbuser, $dbpassword, $db) or die('Could not find host db');
         
         include_once('navbar.php');
 
@@ -41,22 +57,13 @@
                 case 'about': include_once('about.php'); break;
                 case 'contact': include_once('contact.php'); break;
                 case 'store' : include_once('store.php'); break;
-                default : include_once('main.php');break;
+                default : include_once('404.php');break;
             }
         }
         else{
             include_once('main.php');
         }
 
-        if(isset($_POST['signup'])){
-   
-            insert_data($dataconnection); 
-        }
-
-        if (isset($_POST['signin'])){
-            $signedCookie = sign_in_confirm($dataconnection);
-            
-        }
 
     ?>
 

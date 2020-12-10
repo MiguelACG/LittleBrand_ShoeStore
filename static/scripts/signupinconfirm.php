@@ -20,20 +20,17 @@
     }
 
     function sign_in_confirm($connection){
-        $singInEmail = legal_input($_POST['signinemail']);
+        $singInEmail = legal_input($_POST['singinemail']);
         $singInPassword = legal_input($_POST['signinpassword']);
 
-        $query = "SELECT `Customer_ID` FROM `customers` WHERE `Cust_Email_Address` = '$singInEmail' AND `Cust_Password` = '$singInPassword'";
+        $query = "SELECT * FROM `customers` WHERE `Cust_Email_Address` = '$singInEmail' AND `Cust_Password` = '$singInPassword'";
 
         $exec = mysqli_query($connection, $query);
 
-        if($exec > 0){
-             setcookie('SIGNEDIN', $singInEmail, time()+3600);
-            echo '<script>alert( "Welcome '.$_COOKIE["SIGNEDIN"].'")</script>';
-
-            echo $singInEmail;
+        if($exec){
+            $fetch = mysqli_fetch_array($exec);
             
-            return $_COOKIE['SIGNEDIN'];
+            return $fetch['Cust_Email_Address'];
         }
     }
 
