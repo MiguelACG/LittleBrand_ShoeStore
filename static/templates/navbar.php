@@ -30,7 +30,7 @@
     <!--Modify Href for login and cart screen-->
     <a href="#signInModal" id="login" class="nav-link" data-toggle="modal" style="font-size:15px;">Login</a> /
     <a href="#signUpModal" class="nav-link" data-toggle="modal" style="font-size:15px;">SignUp</a>
-    <a href="#" class="nav-link mt-1"><i class="fa fa-search"></i></a>
+    <a href="#searchModal" class="nav-link" data-toggle="modal"><i class="fa fa-search"></i></a>
     <a href="index.php?page=wishlist" class="nav-link" style=""><!--opens the wishlist C:-->
         <svg class="heart" viewBox="0 0 32 29.6">
                 <path d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2
@@ -112,6 +112,30 @@
         </div>
     </div>
 </div>
+
+<!--Search Modal-->
+<div id="searchModal" class="modal fade">
+    <div class="modal-dialog modal-login">
+        <div class="modal-content">
+            <div class="modal-header">			
+                <h4 class="modal-title" style="margin-left:auto; margin-right:auto;">Search Shoes</h4>	
+                <button type="button" style="margin-left:0;" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form action="index.php?page=searchResults" method="post">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="searchBoxInput" placeholder="Search...">		
+                    </div>
+                    <div class="form-group">
+                    <a href="index.php?page=searchResults">
+                        <button type="submit" name="searchResults" class="btn btn-primary btn-lg btn-block login-btn" style="height:20px; width:50%; margin-left:auto; margin-right:auto;">Search!</button>
+                    </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>     
 
 <style>
     .heart {
