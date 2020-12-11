@@ -29,6 +29,20 @@
         $result = mysqli_query($dataconnection, $sqlQuery);
     
         $fetch = mysqli_fetch_array($result);
+
+        if(isset($_POST['shop'])){
+            switch($inventory){
+                case 'men': 
+                    $orderItem = "INSERT INTO `cust_order_item_men` (`Product_ID`) VALUES ( $product_select );";
+                break;
+                case 'women': 
+                    $orderItem = "INSERT INTO `cust_order_item` (`Product_ID`) VALUES ( $product_select );";
+                break;
+            }
+
+            $insertResult = mysqli_query($dataconnection, $orderItem);
+            
+        }
     
     ?>
 
@@ -115,6 +129,10 @@
                                 letter-spacing: 2px;text-decoration: none;">
                             Add to My Wishlist
                         </a>
+                        <br>
+                        <form method="post"> 
+                            <button class="btn btn-primary btn-lg btn-block login-btn" name="shop" type="submit">Add To Cart</button>
+                        </form>
                     </div>
                 </section>
             </div>

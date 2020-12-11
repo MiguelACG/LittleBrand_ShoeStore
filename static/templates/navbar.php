@@ -40,7 +40,7 @@
     <!--<span id="iiyli">Cart</span>-->
     <a href="index.php?page=cart" class="nav-link"><i class='fas fa-shopping-basket' style='font-size:20px'></i></a>
     <!-- Number of times in cart -> Redirect-->
-    <a data-toggle="modal" data-target="#cart" class="nav-link"><span id="id112">0</span></a>
+    <a data-toggle="modal" data-target="#cart" class="nav-link"><span id="id112"></span></a>
 </nav>
 
 

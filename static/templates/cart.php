@@ -1,5 +1,9 @@
 <link rel="stylesheet" href="../styles/mainPages.css"> 
 
+<?php
+    
+?>
+
 <!--Whole Page-->
 <div class="productPageContainer" style="width:90%; margin-left:auto; margin-right:auto;">
     <h1 class="pageTitleHeader" style="">
