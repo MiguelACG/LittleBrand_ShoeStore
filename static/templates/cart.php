@@ -99,7 +99,10 @@
                             <span><strong>$53.98</strong></span>
                         </li>
                     </ul>
-                    <button type="button" class="btn btn-primary btn-block" style="text-transform: uppercase; font-size:15px;">go to checkout</button>
+                    <a href="index.php?page=checkout" class="nav-link">
+                    <!--idk how you wanna handle this, if the person is signed in and we can just autofill the fields and have the verify or we can have a separate page idk-->
+                    <button type="button" class="btn btn-primary btn-block" style="text-transform: uppercase; font-size:15px; width:60%; margin-left:auto; margin-right:auto;">go to checkout</button></a>
+                    <button type="button" class="btn btn-primary btn-block" style="text-transform: uppercase; font-size:15px;">go to fast checkout</button>
                 </div>
             </div>
             <!-- Card -->

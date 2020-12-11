@@ -59,6 +59,7 @@
                 case 'store' : include_once('store.php'); break;
                 case 'cart' : include_once('cart.php'); break;
                 case 'wishlist' : include_once('wishlist.php'); break;
+                case 'checkout' : include_once('checkout.php'); break;
                 default : include_once('404.php');break;
             }
         }

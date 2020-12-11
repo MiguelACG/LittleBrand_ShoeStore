@@ -1,10 +1,12 @@
 <link rel="stylesheet" href="../styles/mainPages.css"> 
 
 <!--Whole Page-->
-<div class="productPageContainer" style="width:90%; margin-left:auto; margin-right:auto;">
-    <h1 class="pageTitleHeader" style="">
+<div id="container-div">
+<h1 class="pageTitleHeader" style="">
         <span class="headerSpan">Wishlist</span>
     </h1>
+<div class="productPageContainer" style="width:90%; margin-left:auto; margin-right:auto;">
+    
     <!--Div with both other divs-->
     <div style="margin-top:5%; display:flex;">
         <!--Left Div-->
@@ -54,5 +56,6 @@
         </div>
     </div>
     <!-- Grid row -->
+</div>
 </div>
 <!--Section: Block Content-->
