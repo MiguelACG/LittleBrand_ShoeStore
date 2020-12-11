@@ -6,9 +6,9 @@
         <span class="headerSpan">Cart</span>
     </h1>
     <!--Div with both other divs-->
-    <div style="margin-top:5%; display:flex;">
+    <div style="margin-top:5%; display:flex; border-bottom: 1px solid #dededd;">
         <!--Left Div-->
-        <div class="" style="margin-left:10%; margin-right:5%; display:inline-block; width:60%; box-sizing: border-box;">
+        <div class="" style="margin-left:10%; margin-right:5%; display:inline-block; width:60%; box-sizing: border-box; ">
 
             <!-- Shirt Div -->
             <div class="" style="margin-bottom:5%; display: flex; flex-wrap: wrap;">
@@ -55,8 +55,8 @@
 
             <!-- Payments Div -->
             <div class="mb-3">
-                <div class="pt-4">
-                    <h5 class="mb-4">We accept</h5>
+                <div class="pt-4" style="margin-left:5%;">
+                    <h5 class="mb-4" style="display:inline-block; margin-right:2.5%; text-transform:uppercase; font-size:19px;">We accept:</h5>
                     <img class="mr-2" width="45px"
                         src="https://mdbootstrap.com/wp-content/plugins/woocommerce-gateway-stripe/assets/images/visa.svg"
                         alt="Visa">
@@ -124,7 +124,7 @@
                                 <input type="radio" name="delivery[]" value="deliver">
                                 <span class="checkmark"></span>
                             </label>
-                            <input class="dropbtn filterBtn" style="height:20px; float:right;" type="submit" name="submit" value="Sort"/>
+                            <input class="dropbtn filterBtn" style="height:20px; float:right;" type="submit" name="submit" value="Save"/>
                         </div>
                     </div>
                 </div>
