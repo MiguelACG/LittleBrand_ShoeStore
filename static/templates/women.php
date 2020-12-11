@@ -235,11 +235,25 @@
 
             <!--Sort Btn-->
             <?php 
+
+            $offset = 0; //beginning of set
+            $page_result = 6; //number of items to display
+
+            //gets items
+            if($_GET['pageno'])
+            {
+                $page_value = $_GET['pageno'];
+                if($page_value > 1)
+                {	
+                   $offset = ($page_value - 1) * $page_result;
+                }
+            }  
+
                 $sqlQuery = '';
                 if(isset($_POST['submit'])){
                     if(!empty($_POST['model'])){
                         $allSelectedModels = implode("', '", $_POST['model']);
-                        $sqlQuery = "SELECT * FROM women_inventory WHERE Shoe_Type IN('$allSelectedModels')";
+                        $sqlQuery = "SELECT * FROM women_inventory WHERE Shoe_Type IN('$allSelectedModels') LIMIT $offset, $page_result";
                         echo $sqlQuery;
                         displayProducts($dataconnection, $sqlQuery);
                     }
@@ -255,7 +269,7 @@
                     }
                     elseif(!empty($_POST['brand'])){
                         $allSelectedBrands = implode(", ", (array)$_POST['brand']);
-                        $sqlQuery = "SELECT * FROM women_inventory WHERE Brand_ID IN('$allSelectedBrands')";
+                        $sqlQuery = "SELECT * FROM women_inventory WHERE Brand_ID IN('$allSelectedBrands') LIMIT $offset, $page_result";
                         echo $sqlQuery;
                         displayProducts($dataconnection, $sqlQuery);
                     }
@@ -265,32 +279,45 @@
                         }
                         switch($filterBy){
                             case 'AZ':
-                                $sqlQuery = "SELECT * FROM women_inventory ORDER BY Product_Name ASC";
+                                $sqlQuery = "SELECT * FROM women_inventory ORDER BY Product_Name ASC LIMIT $offset, $page_result";
                                 displayProducts($dataconnection, $sqlQuery);
                             break;
                             case 'ZA':
-                                $sqlQuery = "SELECT * FROM women_inventory ORDER BY Product_Name DESC";
+                                $sqlQuery = "SELECT * FROM women_inventory ORDER BY Product_Name DESC LIMIT $offset, $page_result";
                                 displayProducts($dataconnection, $sqlQuery);
                             break;
                             case 'PA':
-                                $sqlQuery = "SELECT * FROM women_inventory ORDER BY Product_Price ASC";
+                                $sqlQuery = "SELECT * FROM women_inventory ORDER BY Product_Price ASC LIMIT $offset, $page_result";
                                 displayProducts($dataconnection, $sqlQuery);
                             break;
                             case 'PD':
-                                $sqlQuery = "SELECT * FROM women_inventory ORDER BY Product_Price DESC";
+                                $sqlQuery = "SELECT * FROM women_inventory ORDER BY Product_Price DESC LIMIT $offset, $page_result";
                                 displayProducts($dataconnection, $sqlQuery);
                             break;
                         }                        
                     }
                     else{
-                        $sqlQuery = "SELECT * FROM women_inventory";
+                        $sqlQuery = "SELECT * FROM women_inventory LIMIT $offset, $page_result";
                         displayProducts($dataconnection, $sqlQuery);
                     }
                 }
                 else{
-                    $sqlQuery = "SELECT * FROM women_inventory";
+                    $sqlQuery = "SELECT * FROM women_inventory LIMIT $offset, $page_result";
                     displayProducts($dataconnection, $sqlQuery);
                 }
+
+                $pagecount = 50; // Total number of rows
+                $num = $pagecount / $page_result ;
+         
+                $pageLinks = '<div class="paging" style=" margin-left: auto; margin-right: auto; width: 80%; text-align: center">';
+                $pageLinks .= '<ul class="paging-ul" style="list-style-type: none;">';
+                for($i = 1 ; $i <= $num ; $i++)
+                {
+                     $pageLinks .= '<li style="display: inline; margin: 5%;"><a href="index.php?page=women&pageno='.$i.'">'.$i.'</a></li>';
+                }
+                $pageLinks .= '</ul>';
+                $pageLinks .= '</div>';
+                echo $pageLinks;    
 
                 function displayProducts($dataconnection, $sqlQuery){
                     $result = mysqli_query($dataconnection, $sqlQuery);

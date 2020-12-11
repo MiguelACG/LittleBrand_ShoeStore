@@ -11,6 +11,24 @@
                         padding-bottom:100%; margin-bottom:-100%;
 }
 
+.inventoryPaging a{
+    text-decoration: none;    
+    color: #666666;
+
+}
+.inventoryPaging{
+    text-decoration: none;    
+    background-color: #008CBA;
+    margin: 3%;
+    padding: 5%;
+    text-align: center;
+}
+
+div.paging{
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
 
 
 .div1{
