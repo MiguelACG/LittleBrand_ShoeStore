@@ -1,5 +1,6 @@
 <?php
     include '../scripts/signupinconfirm.php';
+    include '../scripts/search.php';
 
     $dbuser = 'root';
         $dbpassword = '';
@@ -19,10 +20,6 @@
     if(isset($_POST['signup'])){
    
         insert_data($dataconnection); 
-    }
-
-    if(isset($_POST['searchBtn'])){
-        search($dataconnection);
     }
 ?>
 
