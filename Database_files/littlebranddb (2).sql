@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 12, 2020 at 12:25 AM
+-- Generation Time: Dec 12, 2020 at 04:21 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.34
 
@@ -138,7 +138,8 @@ CREATE TABLE `cust_order_item_men` (
 --
 
 INSERT INTO `cust_order_item_men` (`Order_Item_ID`, `Order_ID`, `Product_ID`, `Quantity`, `Gender`) VALUES
-(1, NULL, 1, NULL, NULL);
+(1, NULL, 1, NULL, NULL),
+(2, NULL, 3, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -238,6 +239,47 @@ CREATE TABLE `orders` (
   `Delivery_Phone` varchar(10) NOT NULL,
   `Order_Date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_item`
+--
+
+CREATE TABLE `order_item` (
+  `Order_Item_ID` int(11) NOT NULL,
+  `Order_ID` int(11) DEFAULT NULL,
+  `Product_ID` int(11) NOT NULL,
+  `Quantity` int(11) DEFAULT NULL,
+  `Gender` char(1) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_item_product`
+--
+
+CREATE TABLE `order_item_product` (
+  `Product_ID` int(11) NOT NULL,
+  `Brand_ID` int(11) NOT NULL,
+  `Product_Name` varchar(50) NOT NULL,
+  `Product_Description` mediumtext NOT NULL,
+  `Product_Color` varchar(10) NOT NULL,
+  `Product_Img` mediumtext NOT NULL,
+  `Product_Price` decimal(10,0) NOT NULL,
+  `Product_Size` int(11) NOT NULL,
+  `shoe_type` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `order_item_product`
+--
+
+INSERT INTO `order_item_product` (`Product_ID`, `Brand_ID`, `Product_Name`, `Product_Description`, `Product_Color`, `Product_Img`, `Product_Price`, `Product_Size`, `shoe_type`) VALUES
+(41, 9, 'Campaine Patent Mary Jane Pumps', 'These pointed toe Mary Jane pumps in glossy patent leather, are trimmed with grosgrain and feature an elasticated buttoned strap. Made in Italy, the pumps are mounted on a covered stiletto high heel.\r\nUpper: Patent Leather\r\nLining: Leather\r\nSole: Leather\r\nTrim: Grosgrain\r\nPointed toe\r\nStiletto heel\r\nSlip on\r\nMade in Italy', 'Nude', 'https://s7d9.scene7.com/is/image/HoltRenfrew1/m_5000161606_01', '895', 5, 'Pumps'),
+(42, 5, 'Urban Street Leather Sneakers With Logo Strap', 'These leather slip-on sneakers feature a wide elastic band with GIVENCHY PARIS logo on the front. The style is finished with the signature knotted heel inset featuring a gold GIVENCHY PARIS logo on the back.\r\nUpper: Leather\r\nLining Leather\r\nSole: Rubber\r\nFits true to size', 'Black, Whi', 'https://s7d9.scene7.com/is/image/HoltRenfrew1/m_5000053606_01', '805', 10, 'Sneakers'),
+(43, 6, 'Leather Lace-Up Oxford Shoes With Double G', 'Crafted from smooth leather, these formal lace-up shoes are defined by a pointed toe. A miniature version of the Double G appears as a subtle logo detail on the back.\r\nUpper: Leather\r\nSole: Leather\r\nPointed toe\r\nStacked heel\r\nLace-up closure', 'Black', 'https://s7d9.scene7.com/is/image/HoltRenfrew1/m_5000210895_01', '1080', 10, 'Dress Shoes');
 
 -- --------------------------------------------------------
 
@@ -366,6 +408,19 @@ ALTER TABLE `orders`
   ADD PRIMARY KEY (`Order_ID`);
 
 --
+-- Indexes for table `order_item`
+--
+ALTER TABLE `order_item`
+  ADD PRIMARY KEY (`Order_Item_ID`);
+
+--
+-- Indexes for table `order_item_product`
+--
+ALTER TABLE `order_item_product`
+  ADD PRIMARY KEY (`Product_ID`),
+  ADD KEY `fk_order_item_brand` (`Brand_ID`);
+
+--
 -- Indexes for table `women_inventory`
 --
 ALTER TABLE `women_inventory`
@@ -398,13 +453,25 @@ ALTER TABLE `cust_order_item`
 -- AUTO_INCREMENT for table `cust_order_item_men`
 --
 ALTER TABLE `cust_order_item_men`
-  MODIFY `Order_Item_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Order_Item_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
   MODIFY `Order_ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `order_item`
+--
+ALTER TABLE `order_item`
+  MODIFY `Order_Item_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `order_item_product`
+--
+ALTER TABLE `order_item_product`
+  MODIFY `Product_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- Constraints for dumped tables
@@ -427,6 +494,12 @@ ALTER TABLE `cust_order_item_men`
 --
 ALTER TABLE `men_inventory`
   ADD CONSTRAINT `fk_men_product_brand` FOREIGN KEY (`Brand_ID`) REFERENCES `brands` (`Brand_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `order_item_product`
+--
+ALTER TABLE `order_item_product`
+  ADD CONSTRAINT `fk_order_item_brand` FOREIGN KEY (`Brand_ID`) REFERENCES `brands` (`Brand_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `women_inventory`
