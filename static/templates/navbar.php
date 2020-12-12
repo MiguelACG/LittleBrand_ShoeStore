@@ -128,7 +128,7 @@
                     </div>
                     <div class="form-group">
                     <a href="index.php?page=searchResults">
-                        <button type="submit" name="searchResults" class="btn btn-primary btn-lg btn-block login-btn" style="height:20px; width:50%; margin-left:auto; margin-right:auto;">Search!</button>
+                        <button type="submit" name="searchBtn" class="btn btn-primary btn-lg btn-block login-btn" style="height:20px; width:50%; margin-left:auto; margin-right:auto;">Search!</button>
                     </a>
                     </div>
                 </form>

@@ -20,6 +20,10 @@
    
         insert_data($dataconnection); 
     }
+
+    if(isset($_POST['searchBtn'])){
+        search($dataconnection);
+    }
 ?>
 
 <!DOCTYPE html>
