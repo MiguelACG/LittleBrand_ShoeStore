@@ -243,8 +243,7 @@
                 if(isset($_POST['submit'])){
                     if(!empty($_POST['model'])){
                         $allSelectedModels = implode("', '", (array)$_POST['model']);
-                        $sqlQuery = "SELECT * FROM men_inventory WHERE Shoe_Type IN('$allSelectedModels') LIMIT $offset, $page_result";
-                        echo $sqlQuery;
+                        $sqlQuery = "SELECT * FROM all_inventory WHERE Gender LIKE 'men' AND Shoe_Type IN('$allSelectedModels') LIMIT $offset, $page_result";
                         displayProducts($dataconnection, $sqlQuery);
                     }
                     elseif(!empty($_POST['color'])){
@@ -253,14 +252,12 @@
                         foreach((array)$_POST['color'] as $checked){
                             $colorQList[] = "Product_Color LIKE '%".$checked."%'";
                         }
-                        $sqlQuery = 'SELECT * FROM men_inventory WHERE '.implode(' OR ', $colorQList) ;
-                        echo $sqlQuery;
+                        $sqlQuery = "SELECT * FROM all_inventory WHERE Gender LIKE 'men' AND ".implode(' OR ', $colorQList) ;
                         displayProducts($dataconnection, $sqlQuery);
                     }
                     elseif(!empty($_POST['brand'])){
                         $allSelectedBrands = implode(", ", (array)$_POST['brand']);
-                        $sqlQuery = "SELECT * FROM men_inventory WHERE Brand_ID IN('$allSelectedBrands') LIMIT $offset, $page_result";
-                        echo $sqlQuery;
+                        $sqlQuery = "SELECT * FROM all_inventory WHERE Gender LIKE 'men' AND Brand_ID IN('$allSelectedBrands') LIMIT $offset, $page_result";
                         displayProducts($dataconnection, $sqlQuery);
                     }
                     elseif(!empty($_POST['filter'])){
@@ -269,30 +266,30 @@
                         }
                         switch($filterBy){
                             case 'AZ':
-                                $sqlQuery = "SELECT * FROM men_inventory ORDER BY Product_Name ASC LIMIT $offset, $page_result";
+                                $sqlQuery = "SELECT * FROM all_inventory WHERE Gender LIKE 'men' ORDER BY Product_Name ASC LIMIT $offset, $page_result";
                                 displayProducts($dataconnection, $sqlQuery);
                             break;
                             case 'ZA':
-                                $sqlQuery = "SELECT * FROM men_inventory ORDER BY Product_Name DESC LIMIT $offset, $page_result";
+                                $sqlQuery = "SELECT * FROM all_inventory WHERE Gender LIKE 'men' ORDER BY Product_Name DESC LIMIT $offset, $page_result";
                                 displayProducts($dataconnection, $sqlQuery);
                             break;
                             case 'PA':
-                                $sqlQuery = "SELECT * FROM men_inventory ORDER BY Product_Price ASC LIMIT $offset, $page_result";
+                                $sqlQuery = "SELECT * FROM all_inventory WHERE Gender LIKE 'men' ORDER BY Product_Price ASC LIMIT $offset, $page_result";
                                 displayProducts($dataconnection, $sqlQuery);
                             break;
                             case 'PD':
-                                $sqlQuery = "SELECT * FROM men_inventory ORDER BY Product_Price DESC LIMIT $offset, $page_result";
+                                $sqlQuery = "SELECT * FROM all_inventory WHERE Gender LIKE 'men' ORDER BY Product_Price DESC LIMIT $offset, $page_result";
                                 displayProducts($dataconnection, $sqlQuery);
                             break;
                         }
                     }
                     else{
-                        $sqlQuery = "SELECT * FROM men_inventory LIMIT $offset, $page_result";
+                        $sqlQuery = "SELECT * FROM all_inventory WHERE Gender LIKE 'men' LIMIT $offset, $page_result";
                         displayProducts($dataconnection, $sqlQuery);
                     }
                 }
                 else{
-                    $sqlQuery = "SELECT * FROM men_inventory LIMIT $offset, $page_result";
+                    $sqlQuery = "SELECT * FROM all_inventory WHERE Gender LIKE 'men' LIMIT $offset, $page_result";
                     displayProducts($dataconnection, $sqlQuery);
                 }
 
@@ -321,7 +318,7 @@
 
                         $menDivHTML .='<li class="productLi" data-object-id="prd-123">';// add css classes and the like here. In case you don't know, the .= operators concatenate the strings that will make your html code.
                         $menDivHTML .='    <div class="productDiv2">'; // be careful with this class, as you might need to evaluate it for every run of the loop
-                        $menDivHTML.='        <a class="productA" href="index.php?page=store&inventory=men&item='.$fetch['Product_ID'].'&brandid='.$fetch['Brand_ID'].'">';
+                        $menDivHTML.='        <a class="productA" href="index.php?page=store&inventory=all&item='.$fetch['Product_ID'].'&brandid='.$fetch['Brand_ID'].'">';
                         $menDivHTML .='            <div class="productDiv3">';
                         $menDivHTML .='                 <div class="productDiv4">';
                         $menDivHTML .='                     <img class="productImg" src="'.$fetch['Product_Img'].'" alt="" />';
@@ -343,44 +340,6 @@
                 }
 
             ?>
-
-            <?php 
-            /* $sqlQuery = "SELECT * FROM men_inventory";
-
-             $result = mysqli_query($dataconnection, $sqlQuery);
-
-             $menDivHTML = '<div class="productDiv" data-query="women-all-shoes">';
-
-             $menDivHTML = '<ul class="productUl" style="width:80%; margin-left:auto; margin-right:auto;">';
-
-             while($fetch = mysqli_fetch_array($result)){
-
-                $menDivHTML .='<li class="productLi" data-object-id="prd-123">';// add css classes and the like here. In case you don't know, the .= operators concatenate the strings that will make your html code.
-                $menDivHTML .='    <div class="productDiv2">'; // be careful with this class, as you might need to evaluate it for every run of the loop
-                $menDivHTML.='        <a class="productA" href="index.php?page=store&inventory=men&item='.$fetch['Product_ID'].'&brandid='.$fetch['Brand_ID'].'">';
-                $menDivHTML .='            <div class="productDiv3">';
-                $menDivHTML .='                 <div class="productDiv4">';
-                $menDivHTML .='                     <img class="productImg" src="'.$fetch['Product_Img'].'" alt="" />';
-                $menDivHTML.='                  </div>';
-                $menDivHTML .='             </div>';
-                $menDivHTML .='             <div class="productDiv5">';
-                $menDivHTML .='                 <span class="productSpan1">';
-                $menDivHTML .='                     <span class="">'.$fetch['Product_Name'].'</span>';
-                $menDivHTML .='                 </span>';
-                $menDivHTML .='                 <p class="productP">'.$fetch['Product_Color'].'</p> ';
-                $menDivHTML .='              </div>';
-                $menDivHTML .='         </a>';
-                $menDivHTML .='     </div>';
-                $menDivHTML .=' </li>';
-            }
-            $menDivHTML .= '</ul>';
-            $menDivHTML .= '</div>';*/
-
-            ?>
-
-            <?php ?>
-            
         </div>
-
     </body>
 </html>

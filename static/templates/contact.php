@@ -126,9 +126,6 @@
         
         $sqlquery = "INSERT INTO cust_comments(Customer_ID, Comment) VALUES ($customerId, '$message')";
         $exec = mysqli_query($dataconnection, $sqlquery);
-        
-
-       // echo $customerId;
     }
 ?>
 

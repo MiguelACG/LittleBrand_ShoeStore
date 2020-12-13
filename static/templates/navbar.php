@@ -55,7 +55,7 @@
             <div class="modal-body">
                 <form action="index.php" method="post">
                     <div class="form-group">
-                        <input type="text" class="form-control" name="singinemail" placeholder="Email" required="required">		
+                        <input type="text" class="form-control" name="signinemail" placeholder="Email" required="required">		
                     </div>
                         
                     <div class="form-group">

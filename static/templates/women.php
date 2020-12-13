@@ -253,8 +253,7 @@
                 if(isset($_POST['submit'])){
                     if(!empty($_POST['model'])){
                         $allSelectedModels = implode("', '", $_POST['model']);
-                        $sqlQuery = "SELECT * FROM women_inventory WHERE Shoe_Type IN('$allSelectedModels') LIMIT $offset, $page_result";
-                        echo $sqlQuery;
+                        $sqlQuery = "SELECT * FROM all_inventory WHERE Gender LIKE 'women' AND Shoe_Type IN('$allSelectedModels') LIMIT $offset, $page_result";
                         displayProducts($dataconnection, $sqlQuery);
                     }
                     elseif(!empty($_POST['color'])){
@@ -263,14 +262,12 @@
                         foreach($_POST['color'] as $checked){
                             $colorQList[] = "Product_Color LIKE '%".$checked."%'";
                         }
-                        $sqlQuery = 'SELECT * FROM women_inventory WHERE '.implode(' OR ', $colorQList);
-                        echo $sqlQuery;
+                        $sqlQuery = "SELECT * FROM all_inventory WHERE Gender LIKE 'women' AND ".implode(' OR ', $colorQList);
                         displayProducts($dataconnection, $sqlQuery);
                     }
                     elseif(!empty($_POST['brand'])){
                         $allSelectedBrands = implode(", ", (array)$_POST['brand']);
-                        $sqlQuery = "SELECT * FROM women_inventory WHERE Brand_ID IN('$allSelectedBrands') LIMIT $offset, $page_result";
-                        echo $sqlQuery;
+                        $sqlQuery = "SELECT * FROM all_inventory WHERE Gender LIKE 'women' AND Brand_ID IN('$allSelectedBrands') LIMIT $offset, $page_result";
                         displayProducts($dataconnection, $sqlQuery);
                     }
                     elseif(!empty($_POST['filter'])){
@@ -279,30 +276,30 @@
                         }
                         switch($filterBy){
                             case 'AZ':
-                                $sqlQuery = "SELECT * FROM women_inventory ORDER BY Product_Name ASC LIMIT $offset, $page_result";
+                                $sqlQuery = "SELECT * FROM all_inventory WHERE Gender LIKE 'women' ORDER BY Product_Name ASC LIMIT $offset, $page_result";
                                 displayProducts($dataconnection, $sqlQuery);
                             break;
                             case 'ZA':
-                                $sqlQuery = "SELECT * FROM women_inventory ORDER BY Product_Name DESC LIMIT $offset, $page_result";
+                                $sqlQuery = "SELECT * FROM all_inventory WHERE Gender LIKE 'women' ORDER BY Product_Name DESC LIMIT $offset, $page_result";
                                 displayProducts($dataconnection, $sqlQuery);
                             break;
                             case 'PA':
-                                $sqlQuery = "SELECT * FROM women_inventory ORDER BY Product_Price ASC LIMIT $offset, $page_result";
+                                $sqlQuery = "SELECT * FROM all_inventory WHERE Gender LIKE 'women' ORDER BY Product_Price ASC LIMIT $offset, $page_result";
                                 displayProducts($dataconnection, $sqlQuery);
                             break;
                             case 'PD':
-                                $sqlQuery = "SELECT * FROM women_inventory ORDER BY Product_Price DESC LIMIT $offset, $page_result";
+                                $sqlQuery = "SELECT * FROM all_inventory WHERE Gender LIKE 'women' ORDER BY Product_Price DESC LIMIT $offset, $page_result";
                                 displayProducts($dataconnection, $sqlQuery);
                             break;
                         }                        
                     }
                     else{
-                        $sqlQuery = "SELECT * FROM women_inventory LIMIT $offset, $page_result";
+                        $sqlQuery = "SELECT * FROM all_inventory WHERE Gender LIKE 'women' LIMIT $offset, $page_result";
                         displayProducts($dataconnection, $sqlQuery);
                     }
                 }
                 else{
-                    $sqlQuery = "SELECT * FROM women_inventory LIMIT $offset, $page_result";
+                    $sqlQuery = "SELECT * FROM all_inventory WHERE Gender LIKE 'women' LIMIT $offset, $page_result";
                     displayProducts($dataconnection, $sqlQuery);
                 }
 
@@ -330,7 +327,7 @@
 
                             $womenDivHTML .='<li class="productLi" data-object-id="prd-123">';// add css classes and the like here. In case you don't know, the .= operators concatenate the strings that will make your html code.
                             $womenDivHTML .='    <div class="productDiv2">'; // be careful with this class, as you might need to evaluate it for every run of the loop
-                            $womenDivHTML.='        <a class="productA" href="index.php?page=store&inventory=women&item='.$fetch['Product_ID'].'&brandid='.$fetch['Brand_ID'].'">';
+                            $womenDivHTML.='        <a class="productA" href="index.php?page=store&inventory=all&item='.$fetch['Product_ID'].'&brandid='.$fetch['Brand_ID'].'">';
                             $womenDivHTML .='            <div class="productDiv3">';
                             $womenDivHTML.='                 <div class="productDiv4">';
                             $womenDivHTML .='                     <img class="productImg" src="'.$fetch['Product_Img'].'" alt="" />';
@@ -351,49 +348,7 @@
                         echo $womenDivHTML;
                 }
 
-            ?>
-
-            <!--Products-->
-            <?php 
-            /*    function showAllProducts($dataconnection){
-                    $sqlQuery = "SELECT * FROM women_inventory";
-
-                    $result = mysqli_query($dataconnection, $sqlQuery);
-
-                    $womenDivHTML = '<div class="productDiv" data-query="women-all-shoes">';
-
-                    $womenDivHTML = '<ul class="productUl" style="width:80%; margin-left:auto; margin-right:auto;">';
-
-                    while($fetch = mysqli_fetch_array($result)){
-
-                        $womenDivHTML .='<li class="productLi" data-object-id="prd-123">';// add css classes and the like here. In case you don't know, the .= operators concatenate the strings that will make your html code.
-                        $womenDivHTML .='    <div class="productDiv2">'; // be careful with this class, as you might need to evaluate it for every run of the loop
-                        $womenDivHTML.='        <a class="productA" href="index.php?page=store&inventory=women&item='.$fetch['Product_ID'].'&brandid='.$fetch['Brand_ID'].'">';
-                        $womenDivHTML .='            <div class="productDiv3">';
-                        $womenDivHTML.='                 <div class="productDiv4">';
-                        $womenDivHTML .='                     <img class="productImg" src="'.$fetch['Product_Img'].'" alt="" />';
-                        $womenDivHTML.='                  </div>';
-                        $womenDivHTML .='             </div>';
-                        $womenDivHTML .='             <div class="productDiv5">';
-                        $womenDivHTML .='                 <span class="productSpan1">';
-                        $womenDivHTML .='                     <span class="">'.$fetch['Product_Name'].'</span>';
-                        $womenDivHTML .='                 </span>';
-                        $womenDivHTML .='                 <p class="productP">'.$fetch['Product_Color'].'</p> ';
-                        $womenDivHTML.='              </div>';
-                        $womenDivHTML .='         </a>';
-                        $womenDivHTML.='     </div>';
-                        $womenDivHTML.=' </li>';
-                    }
-                    $womenDivHTML .= '</ul>';
-                    $womenDivHTML .= '</div>';
-                    echo $womenDivHTML;
-                }*/
-            ?>
-
-            <?php  ?>
-
-            
+            ?>            
         </div>
-
     </body>
 </html>

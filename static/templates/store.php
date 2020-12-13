@@ -15,15 +15,8 @@
         $inventory = $_GET['inventory'];
         $product_select = $_GET['item'];
         $prod_brand = $_GET['brandid'];  
-
-        switch($inventory){
-            case 'men': 
-                $sqlQuery = "SELECT * FROM men_inventory, brands WHERE men_inventory.Brand_ID = brands.Brand_ID  AND  brands.Brand_ID = '$prod_brand'  AND men_inventory.Product_ID ='$product_select'";
-            break;
-            case 'women': 
-                $sqlQuery = "SELECT * FROM women_inventory, brands WHERE women_inventory.Brand_ID = brands.Brand_ID  AND  brands.Brand_ID = '$prod_brand'  AND women_inventory.Product_ID ='$product_select'";
-            break;
-        }
+        
+        $sqlQuery = "SELECT * FROM all_inventory, brands WHERE all_inventory.Brand_ID = brands.Brand_ID  AND  brands.Brand_ID = '$prod_brand'  AND all_inventory.Product_ID ='$product_select'";
 
 
         $result = mysqli_query($dataconnection, $sqlQuery);
@@ -31,17 +24,8 @@
         $fetch = mysqli_fetch_array($result);
 
         if(isset($_POST['shop'])){
-            switch($inventory){
-                case 'men': 
-                    $orderItem = "INSERT INTO `cust_order_item_men` (`Product_ID`) VALUES ( $product_select );";
-                break;
-                case 'women': 
-                    $orderItem = "INSERT INTO `cust_order_item` (`Product_ID`) VALUES ( $product_select );";
-                break;
-            }
-
-            $insertResult = mysqli_query($dataconnection, $orderItem);
-            
+            $orderItem = "INSERT INTO `cust_order_item`(`Product_ID`) VALUES ( $product_select )";
+            $insertResult = mysqli_query($dataconnection, $orderItem);            
         }
     
     ?>

@@ -13,66 +13,46 @@
                 <span class="headerSpan">Search Results</span>
             </h1>
 
-            <!--Sort Btn-->
-            <?php 
+          <!--Search-->
+          <?php 
             $keyword = $_POST['searchBoxInput'];
-            include_once '../scripts/search.php';
 
-            insert_search_data($keyword, 'women', $dataconnection); //Search for Women Items
-            insert_search_data($keyword, 'men', $dataconnection); //Search for men items
-
-            $searchQuery = "SELECT * FROM search_items";
+            $searchQuery = "SELECT * FROM all_inventory 
+                    WHERE Product_Name LIKE '%".$keyword."%' 
+                    OR Product_Description LIKE '%".$keyword."%'
+                    OR Product_Color LIKE '%".$keyword."%'
+                    OR shoe_type LIKE '%".$keyword."%'";
             
             $result = mysqli_query($dataconnection, $searchQuery);
-            echo print_r($result);
-            if (!$result) {
-              printf("Error: %s\n", mysqli_error($dataconnection));
-              exit();
+
+            $DivHtml= '<div class="productDiv" data-query="women-all-shoes">';
+
+            $DivHtml.= '<ul class="productUl" style="width:80%; margin-left:auto; margin-right:auto;">';
+
+            while($fetch = mysqli_fetch_array($result)){
+                $DivHtml .='<li class="productLi" data-object-id="prd-123">';// add css classes and the like here. In case you don't know, the .= operators concatenate the strings that will make your html code.
+                $DivHtml .='    <div class="productDiv2">'; // be careful with this class, as you might need to evaluate it for every run of the loop
+                $DivHtml.='        <a class="productA" href="index.php?page=store&inventory=all&item='.$fetch['Product_ID'].'&brandid='.$fetch['Brand_ID'].'">';
+                $DivHtml .='            <div class="productDiv3">';
+                $DivHtml.='                 <div class="productDiv4">';
+                $DivHtml .='                     <img class="productImg" src="'.$fetch['Product_Img'].'" alt="" />';
+                $DivHtml.='                  </div>';
+                $DivHtml .='             </div>';
+                $DivHtml .='             <div class="productDiv5">';
+                $DivHtml .='                 <span class="productSpan1">';
+                $DivHtml .='                     <span class="">'.$fetch['Product_Name'].'</span>';
+                $DivHtml .='                 </span>';
+                $DivHtml .='                 <p class="productP">'.$fetch['Product_Color'].'</p> ';
+                $DivHtml.='              </div>';
+                $DivHtml .='         </a>';
+                $DivHtml.='     </div>';
+                $DivHtml.=' </li>';
             }
+            $DivHtml .= '</ul>';
+            $DivHtml .= '</div>';
+            echo $DivHtml;
 
-
-                    $womenDivHTML= '<div class="productDiv" data-query="women-all-shoes">';
-
-                    $womenDivHTML.= '<ul class="productUl" style="width:80%; margin-left:auto; margin-right:auto;">';
-
-                    while($fetch = mysqli_fetch_array($result)){
-echo "anything?";
-                        $womenDivHTML .='<li class="productLi" data-object-id="prd-123">';// add css classes and the like here. In case you don't know, the .= operators concatenate the strings that will make your html code.
-                        $womenDivHTML .='    <div class="productDiv2">'; // be careful with this class, as you might need to evaluate it for every run of the loop
-                        echo (int)$fetch['Product_ID'];
-                        if((int)$fetch['Product_ID'] > 100){
-                          echo "hello";
-                          $womenProdID = (int)$fetch['Product_ID']-100;
-                          $womenDivHTML.='        <a class="productA" href="index.php?page=store&inventory=women&item='.$womenProdID.'&brandid='.$fetch['Brand_ID'].'">';
-                        }
-                        else{
-                          $womenDivHTML.='        <a class="productA" href="index.php?page=store&inventory=men&item='.$fetch['Product_ID'].'&brandid='.$fetch['Brand_ID'].'">';
-                        }
-                        
-                        $womenDivHTML .='            <div class="productDiv3">';
-                        $womenDivHTML.='                 <div class="productDiv4">';
-                        $womenDivHTML .='                     <img class="productImg" src="'.$fetch['Product_Img'].'" alt="" />';
-                        $womenDivHTML.='                  </div>';
-                        $womenDivHTML .='             </div>';
-                        $womenDivHTML .='             <div class="productDiv5">';
-                        $womenDivHTML .='                 <span class="productSpan1">';
-                        $womenDivHTML .='                     <span class="">'.$fetch['Product_Name'].'</span>';
-                        $womenDivHTML .='                 </span>';
-                        $womenDivHTML .='                 <p class="productP">'.$fetch['Product_Color'].'</p> ';
-                        $womenDivHTML.='              </div>';
-                        $womenDivHTML .='         </a>';
-                        $womenDivHTML.='     </div>';
-                        $womenDivHTML.=' </li>';
-                    }
-                    $womenDivHTML .= '</ul>';
-                    $womenDivHTML .= '</div>';
-                    echo $womenDivHTML;
-                  
-            ?>
-
-            <?php  ?>
-
-            
+          ?>            
         </div>
 
     </body>

@@ -1,6 +1,5 @@
 <?php
     include '../scripts/signupinconfirm.php';
-    include '../scripts/search.php';
 
     $dbuser = 'root';
         $dbpassword = '';
@@ -10,11 +9,11 @@
         $dataconnection = new mysqli('localhost', $dbuser, $dbpassword, $db) or die('Could not find host db');
 
     if (isset($_POST['signin'])){
-        $signedCookie = sign_in_confirm($dataconnection);
+        $signedCookie = sign_in_confirm($dataconnection, legal_input($_POST['signinemail']), legal_input($_POST['signinpassword']));
         
-        setcookie('SIGNEDIN', $signedCookie, time()+3600, '/');
+        setcookie("SIGNEDIN", $signedCookie, time()+3600, '/');
         
-        echo '<script>alert( "Welcome '.$_COOKIE['SIGNEDIN'].'")</script>';
+        echo '<script>alert( "Welcome '.$_COOKIE["SIGNEDIN"].'")</script>';
     }
 
     if(isset($_POST['signup'])){
@@ -62,6 +61,7 @@
                 case 'wishlist' : include_once('wishlist.php'); break;
                 case 'checkout' : include_once('checkout.php'); break;
                 case 'searchResults' : include_once('searchResults.php'); break;
+                case 'test' : include_once('test.php'); break;
                 default : include_once('404.php');break;
             }
         }
@@ -72,8 +72,8 @@
 
     ?>
 
-        <footer class="footer pt-5 pb-5 py-5 mt-auto bg-light footer-light">
-            <div class="container">
+        <footer class="footer pt-5 pb-5 py-5 mt-auto bg-light footer-light" style="">
+            <div class="container" style="">
                 <div class="row">
                     <div class="col-lg-3">
                         <div class="footer-brand font-weight-bold">The Little Brand Shoe Store</div>
