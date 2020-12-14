@@ -29,7 +29,6 @@
 
         if($exec){
             $fetch = mysqli_fetch_array($exec);
-            echo "yeee";
             return $fetch['Cust_Email_Address'];
         }
     }

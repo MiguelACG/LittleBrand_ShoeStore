@@ -103,7 +103,6 @@
                             style="display: block;
                                 position: relative;
                                 border-top: 1px dotted #D8D8D8;
-                                border-bottom: 1px dotted #D8D8D8;
                                 padding: 10px 0;
                                 margin-bottom: 20px;
                                 text-align: center;

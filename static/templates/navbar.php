@@ -6,7 +6,7 @@
     <div id="navigations-02" class="collapse navbar-collapse justify-content-md-center">
         <ul class="navbar-nav justify-content-end">
             <li class="nav-item mr-2"></li>
-            <a href="index.php?page=collections" class="nav-link ">Collections<!--<span class="sr-only">(current)</span> (active was in the class)--></a>
+            <a href="index.php?page=profile" class="nav-link ">Profile<!--<span class="sr-only">(current)</span> (active was in the class)--></a>
             <a href="index.php?page=women&pageno=1" class="nav-link">Women</a>
             <a href="index.php?page=men&pageno=1" class="nav-link">Men</a>
             <a href="index.php?page=about&brandid=16" class="nav-link">About</a>

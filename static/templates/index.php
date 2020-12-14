@@ -13,12 +13,19 @@
         
         setcookie("SIGNEDIN", $signedCookie, time()+3600, '/');
         
-        echo '<script>alert( "Welcome '.$_COOKIE["SIGNEDIN"].'")</script>';
+        //echo '<script>alert( "Welcome '.$_COOKIE["SIGNEDIN"].'")</script>';
     }
 
     if(isset($_POST['signup'])){
    
         insert_data($dataconnection); 
+    }
+    
+    if(isset($_POST['delete'])){
+        $email = $_COOKIE['SIGNEDIN'];
+        $query = "DELETE FROM customers WHERE Cust_Email_Address = '$email'";
+        $result = mysqli_query($dataconnection, $query);
+        setcookie("SIGNEDIN", "", time() - 3600, '/'); 
     }
 ?>
 
@@ -51,7 +58,7 @@
             $page_select = $_GET['page'];
             switch($page_select){
                 case 'main': include_once('main.php'); break;
-                case 'collections': include_once('profile.php'); break;
+                case 'profile': include_once('profile.php'); break;
                 case 'women': include_once('women.php'); break;
                 case 'men': include_once('men.php'); break;
                 case 'about': include_once('about.php'); break;
