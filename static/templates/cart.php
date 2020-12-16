@@ -37,6 +37,8 @@
                 $cartSubtotal = 0;
 
                 $cartProd = '';
+
+                if($resultat < 0){
                 while($fetchProd = mysqli_fetch_array($resultat)){
                     //Shirt Div
                     $cartProd .= '<div class="" style="margin-bottom:5%; display:flex; flex-wrap:wrap;">';
@@ -77,7 +79,11 @@
                 
                     $cartProd .= '</div>'; 
                     $cartSubtotal+=$fetchProd['Product_Price'];
-                }  
+                }
+            }
+            else{
+                $cartProd .= '<h3 class="pageTitleHeader" style=""><span class="headerSpan">Make this fun. Add items to the cart!</span></h3>';
+            }  
                     
             ?>
             <?php echo $cartProd; $cartProd = '';?>

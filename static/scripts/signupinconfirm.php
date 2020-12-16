@@ -33,12 +33,42 @@
         }
     }
 
+    function get_sign_id($email, $connection){
+        $query = "SELECT * FROM `customers` WHERE `Cust_Email_Address` = '$email'";
+        $exec = mysqli_query($connection, $query);
+        if($exec){
+            $fetch = mysqli_fetch_array($exec);
+            return $fetch['Customer_ID'];
+        }
+    }
+
 
     function legal_input($value) {
         $value = trim($value);
         $value = stripslashes($value);
         $value = htmlspecialchars($value);
         return $value;
+    }
+
+    function save_customer_info($connection){
+        $first_name = legal_input($_POST['fname']); 
+        $last_name = legal_input($_POST['lname']);
+        $email= legal_input($_POST['email']);
+        $phone = legal_input($_POST['phone']); 
+        $addline = legal_input($_POST['addline']); 
+        $pcode = legal_input($_POST['pcode']); 
+        $city = legal_input($_POST['city']); 
+        $gender = legal_input($_POST['gender']); 
+        $password = legal_input($_POST['password']);
+
+        
+
+        $cookieInfo = $_COOKIE['USERID'];
+        $savequery = "UPDATE `customers` SET `Cust_Last_Name` = '$last_name', `Cust_First_Name` = '$first_name', `Cust_Email_Address` = '$email', `Cust_Address_Line` = '$addline', `Cust_City` = '$city', `Cust_Postal_Code` = '$pcode', `Cust_Gender` = '$gender', `Cust_Password` = '$password' WHERE `customers`.`Customer_ID` = $cookieInfo;";
+
+        $exec = mysqli_query($connection, $savequery);
+
+        return $email;
     }
 
 ?>

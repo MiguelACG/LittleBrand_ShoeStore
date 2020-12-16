@@ -10,23 +10,33 @@
 
     if (isset($_POST['signin'])){
         $signedCookie = sign_in_confirm($dataconnection, legal_input($_POST['signinemail']), legal_input($_POST['signinpassword']));
-        
+        $signedIDCookie = get_sign_id($signedCookie, $dataconnection);
+
         setcookie("SIGNEDIN", $signedCookie, time()+3600, '/');
+        setcookie("USERID", $signedIDCookie, time()+3600, '/');
         
         //echo '<script>alert( "Welcome '.$_COOKIE["SIGNEDIN"].'")</script>';
     }
-
+    //Signup to account
     if(isset($_POST['signup'])){
    
         insert_data($dataconnection); 
     }
-    
+    //Delete account
     if(isset($_POST['delete'])){
         $email = $_COOKIE['SIGNEDIN'];
         $query = "DELETE FROM customers WHERE Cust_Email_Address = '$email'";
         $result = mysqli_query($dataconnection, $query);
         setcookie("SIGNEDIN", "", time() - 3600, '/'); 
     }
+    //Update account reccords
+    if(isset($_POST['saveProfileBtn'])){
+   
+        $updatedCookie = save_customer_info($dataconnection);
+        setcookie("SIGNEDIN", $updatedCookie, time()+3600, '/'); 
+        header('Location: index.php?page=profile');
+    }
+
 ?>
 
 <!DOCTYPE html>
