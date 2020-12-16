@@ -1,6 +1,6 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light" >
-    <a href="#" class="navbar-brand d-lg-none">Gridbox</a>
+    <a href="#" class="navbar-brand d-lg-none"></a>
     <button type="button" data-toggle="collapse" data-target="#navigations-02" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
     <a href="index.php?page=main" class="navbar-brand mr-0">Little Brand Shoe Store</a>
     <div id="navigations-02" class="collapse navbar-collapse justify-content-md-center">

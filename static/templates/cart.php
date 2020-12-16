@@ -32,13 +32,24 @@
                     }
                 }
 
+                if(isset($_GET['action'])){
+                    if($_GET['action'] == 'addwish'){
+                        //Moves item to cart
+                        $getItemID = $_GET['item'];
+                        $userID = $_COOKIE['USERID'];
+                        $orderItem = "INSERT INTO `wishlist_item`(`Product_ID`, Client_ID) VALUES ( $getItemID, $userID )";
+                        $resultat1 = mysqli_query($dataconnection, $orderItem);
+
+                    }
+                }
+
                 $prodQuery = "SELECT * FROM all_inventory w, cust_order_item wo WHERE w.Product_ID = wo.product_ID";
                 $resultat = mysqli_query($dataconnection, $prodQuery);
                 $cartSubtotal = 0;
 
                 $cartProd = '';
 
-                if($resultat < 0){
+                if(mysqli_num_rows($resultat) > 0){
                 while($fetchProd = mysqli_fetch_array($resultat)){
                     //Shirt Div
                     $cartProd .= '<div class="" style="margin-bottom:5%; display:flex; flex-wrap:wrap;">';
@@ -68,7 +79,7 @@
                     $cartProd .=                        '<i class="fas fa-trash-alt" style="margin-right: .25rem!important;"></i>'; 
                     $cartProd .=                        'Remove item';
                     $cartProd .=                    '</a>';
-                    $cartProd .=                    '<a href="#!" type="button" class="" style="text-transform: uppercase; margin:3%; font-size: 15px; color: #007bff; text-decoration: none; background-color: transparent;">';
+                    $cartProd .=                    '<a href="index.php?page=cart&action=addwish&item='.$fetchProd['Product_ID'].'" type="button" class="" style="text-transform: uppercase; margin:3%; font-size: 15px; color: #007bff; text-decoration: none; background-color: transparent;">';
                     $cartProd .=                        '<i class="fas fa-heart mr-1" style="color:red;"></i>'; 
                     $cartProd .=                        'Move to wish list'; 
                     $cartProd .=                    '</a>';

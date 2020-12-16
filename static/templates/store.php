@@ -27,6 +27,12 @@
             $orderItem = "INSERT INTO `cust_order_item`(`Product_ID`) VALUES ( $product_select )";
             $insertResult = mysqli_query($dataconnection, $orderItem);            
         }
+
+        if(isset($_POST['wish'])){
+            $userID = $_COOKIE['USERID'];
+            $orderItem = "INSERT INTO `wishlist_item`(`Product_ID`, Client_ID) VALUES ( $product_select, $userID )";
+            $insertResult = mysqli_query($dataconnection, $orderItem);            
+        }
     
     ?>
 
@@ -96,24 +102,23 @@
                             letter-spacing: 0.0225em;">
                             <?php echo $fetch['Product_Description']?>
                         </div>
-                        <a data-gtm-event-click="{&quot;event&quot;:&quot;gtm.ext.event&quot;,&quot;eventTmp&quot;:&quot;enhancedEcommerce&quot;,&quot;eventCategory&quot;:&quot;enhancedEcommerce&quot;,&quot;eventAction&quot;:&quot;addToWishlist&quot;,&quot;eventLabel&quot;:&quot;Dandelion&quot;,&quot;ecommerce&quot;:{&quot;currencyCode&quot;:&quot;CAD&quot;,&quot;add&quot;:{&quot;products&quot;:[{&quot;name&quot;:&quot;Dandelion&quot;,&quot;id&quot;:&quot;1150564BK01&quot;,&quot;price&quot;:&quot;1095.00&quot;,&quot;dimension2&quot;:&quot;black&quot;,&quot;category&quot;:&quot;men shoes&quot;}]}}}" 
+                        <br>
+                        <form method="post"> 
+                        <button data-gtm-event-click="{&quot;event&quot;:&quot;gtm.ext.event&quot;,&quot;eventTmp&quot;:&quot;enhancedEcommerce&quot;,&quot;eventCategory&quot;:&quot;enhancedEcommerce&quot;,&quot;eventAction&quot;:&quot;addToWishlist&quot;,&quot;eventLabel&quot;:&quot;Dandelion&quot;,&quot;ecommerce&quot;:{&quot;currencyCode&quot;:&quot;CAD&quot;,&quot;add&quot;:{&quot;products&quot;:[{&quot;name&quot;:&quot;Dandelion&quot;,&quot;id&quot;:&quot;1150564BK01&quot;,&quot;price&quot;:&quot;1095.00&quot;,&quot;dimension2&quot;:&quot;black&quot;,&quot;category&quot;:&quot;men shoes&quot;}]}}}" 
                             data-label="Add To Wishlist" data-action="Product Page" data-category="Product Page" 
-                            href="https://us.christianlouboutin.com/ca_en/wishlist/index/add/product/337065/form_key/uu2L16tsHt9InAbe/" 
                             class="addToWishlist" onclick=""
                             style="display: block;
                                 position: relative;
-                                border-top: 1px dotted #D8D8D8;
-                                padding: 10px 0;
                                 margin-bottom: 20px;
                                 text-align: center;
-                                height: 20px;
+                                height: 10%;
                                 color: #ed1e24;
                                 font-weight: bold;
-                                letter-spacing: 2px;text-decoration: none;">
+                                letter-spacing: 2px;text-decoration: none;"
+                                type="submit" name="wish">
                             Add to My Wishlist
-                        </a>
+                        </button>
                         <br>
-                        <form method="post"> 
                             <button class="btn btn-primary btn-lg btn-block login-btn" name="shop" type="submit">Add To Cart</button>
                         </form>
                     </div>
